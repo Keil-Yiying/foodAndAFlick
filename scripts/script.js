@@ -15,7 +15,6 @@ app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
-app.recipeUrl = `https://api.spoonacular.com/recipes/random`;
 
 app.usersGenreChoice;
 
@@ -46,7 +45,7 @@ app.getRecipes = function(query) {
         method: 'GET', 
         dataType: 'json', 
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         data: {
             apiKey: app.recipeKey,
@@ -82,7 +81,7 @@ app.getRecipes('casserole');
 // 1. doc ready //
 $(function () {
     console.log('doc ready');
-    movieApp.init();
+    // movieApp.init();
 })
 
 
