@@ -15,6 +15,7 @@ app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
+app.recipeUrl2 = `https://api.spoonacular.com/recipes/random`;
 
 app.usersGenreChoice;
 
