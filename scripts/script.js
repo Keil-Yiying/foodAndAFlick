@@ -12,18 +12,20 @@ const app = {};
 
 app.movieKey = '38f9a8f5c677f0356adca226f357b762';
 app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
+app.movieImgUrl = `https://image.tmdb.org/t/p/w500`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
+app.recipeUrl2 = `https://api.spoonacular.com/recipes/random`; //random
 
-app.usersGenreChoice;
+// app.usersGenreChoice;
 
-app.usersFoodChoice;
+// app.usersFoodChoice;
 
 
 // 4. function to get information //
-app.getMovies = function(query) { 
-    $.ajax({
+app.getMovies = function(query) {
+    return $.ajax({
         url: app.movieUrl,
         method: 'GET',
         dataType: 'json',
@@ -32,17 +34,12 @@ app.getMovies = function(query) {
             with_genres: query,
             include_adult: false
             }
-        }).then(function(result) {
-            
-            console.log(result);
-        }).fail( (error) => {
-            console.log(error)
-        })
-};
+    })
+}
 
 app.getRecipes = function(query) {
-    $.ajax({ 
-        url: app.recipeUrl, 
+    return $.ajax({ 
+        url: app.recipeUrl2, 
         method: 'GET', 
         dataType: 'json', 
         headers: {
@@ -50,16 +47,12 @@ app.getRecipes = function(query) {
         },
         data: {
             apiKey: app.recipeKey,
-            query: query,
+            tags: query,
             number: 4
         }
-    }).then(function(result) {
-        console.log(result);
-    }).fail(function(error) {
-        console.log(error);
     })
-}
 
+}
 
 
 // passing in the genre ID
@@ -72,28 +65,51 @@ app.getRecipes = function(query) {
 
 // 5. Function to display movie array // LINE 27 is narrowing it down to one result //
 // movieApp.displayMovieArray = function(movieResultArray) {
-//     console.log('display array', movieResultArray.genres);
-// };
-
-// // 3. creat init to start the app //
-// movieApp.init = function() {
-//     console.log('test1');
-//     movieApp.getMovieInformation();
-// }
-
-
-
+    //     console.log('display array', movieResultArray.genres);
+    // };
+    
+    // // 3. creat init to start the app //
+    // movieApp.init = function() {
+        //     console.log('test1');
+        //     movieApp.getMovieInformation();
+        // }
+        
+        
+        
 $('form').on('submit', function (e) {
     e.preventDefault();
-    app.usersGenreChoice = $('#genreSearch').val();
+    app.usersGenreChoice = parseInt($('#genreSearch').val());
     console.log(app.usersGenreChoice);
+
     app.usersFoodChoice = $('#foodSearch').val();
     console.log(app.usersFoodChoice);
-    app.getMovies(app.usersGenreChoice);
-    app.getRecipes(app.usersFoodChoice);
+
+    // app.getMovies(app.usersGenreChoice);
+    // app.getRecipes(app.usersFoodChoice);
+
+    $.when(app.getMovies(app.usersGenreChoice), app.getRecipes(app.usersFoodChoice))
+        .then(function(movieChoices, recipeChoices) {
+            console.log(movieChoices[0], recipeChoices[0]);
+
+            $('.movieResults').append(`
+                <p>${movieChoices[0].results[0].title}</p>
+                <p>${movieChoices[0].results[0].overview}</p>
+                <p><img src="${app.movieImgUrl}${movieChoices[0].results[0].poster_path}"> This is movieUrl, poster_path</p>
+            `);
+
+            $('.recipeResults').append(`
+                <p>${recipeChoices[0].title}</p>
+                <p><img src="${recipeChoices[0].image}"></p>
+                <p><a href="${recipeChoices[0].sourceUrl}">Go to recipe</p>
+            `);
+
+        })
+        .fail(function(error) {
+            console.log(error);
+        });
 })
-
-
+        
+        
 
 
 
