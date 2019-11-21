@@ -91,17 +91,24 @@ $('form').on('submit', function (e) {
         .then(function(movieChoices, recipeChoices) {
             console.log(movieChoices[0], recipeChoices[0]);
 
-            $('.movieResults').append(`
-                <p>${movieChoices[0].results[0].title}</p>
-                <p>${movieChoices[0].results[0].overview}</p>
-                <p><img src="${app.movieImgUrl}${movieChoices[0].results[0].poster_path}"> This is movieUrl, poster_path</p>
-            `);
 
-            $('.recipeResults').append(`
-                <p>${recipeChoices[0].title}</p>
-                <p><img src="${recipeChoices[0].image}"></p>
-                <p><a href="${recipeChoices[0].sourceUrl}">Go to recipe</p>
+
+
+            for (let i = 0; i < 4; i++) {
+                $('.movieResults').append(`
+                <p>${movieChoices[0].results[i].title}</p>
+                <p>${movieChoices[0].results[i].overview}</p>
+                <p><img src="${app.movieImgUrl}${movieChoices[0].results[i].poster_path}"> This is movieUrl, poster_path</p>
             `);
+            }
+
+            for (let i = 0; i < 4; i++) {
+            $('.recipeResults').append(`
+                <p>${recipeChoices[0].recipes[i].title}</p>
+                <p><img src="${recipeChoices[0].recipes[i].image}"></p>
+                <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>
+            `);
+            }
 
         })
         .fail(function(error) {
