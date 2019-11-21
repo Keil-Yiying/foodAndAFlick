@@ -1,3 +1,56 @@
+* {
+    border: .1px solid red;
+}
+
+html {
+    font-size: 125%;
+}
+
+body {
+    color: black;
+    background: #FFE9E9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+    line-height: 50px;
+    margin: 0;
+    width: 500px;
+}
+
+p {
+    font-size: 2.0rem;
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 30px;
+    padding: 0px 0px;
+}
+
+movie-img {
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    display: block;
+}
+
+recipe-img {
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    display: block;
+}
+
 .flex-container {
     display: flex;
     justify-content: center;
@@ -6,3 +59,4 @@
 .first-page {
     text-align: center;
 }
+
