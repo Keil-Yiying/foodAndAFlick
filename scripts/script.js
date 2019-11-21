@@ -15,7 +15,6 @@ app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
-app.recipeUrl2 = `https://api.spoonacular.com/recipes/random`;
 
 app.usersGenreChoice;
 
@@ -90,8 +89,8 @@ $('form').on('submit', function (e) {
     console.log(app.usersGenreChoice);
     app.usersFoodChoice = $('#foodSearch').val();
     console.log(app.usersFoodChoice);
-    app.getMovies(app.usersGenreChoice)
-    app.getRecipes(app.usersFoodChoice)
+    app.getMovies(app.usersGenreChoice);
+    app.getRecipes(app.usersFoodChoice);
 })
 
 
@@ -101,11 +100,7 @@ $('form').on('submit', function (e) {
 // 1. doc ready //
 $(function () {
     console.log('doc ready');
-<<<<<<< HEAD
-    // getMovies.init();
-=======
     // movieApp.init();
->>>>>>> 7a8a0f703637e9a4bb41a2deb4782badd4fa986c
 })
 
 
