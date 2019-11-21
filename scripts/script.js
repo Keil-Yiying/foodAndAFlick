@@ -15,7 +15,6 @@ app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
-app.recipeUrl = `https://api.spoonacular.com/recipes/random`;
 
 app.usersGenreChoice;
 
@@ -30,7 +29,8 @@ app.getMovies = function(query) {
         dataType: 'json',
         data: {
             api_key: app.movieKey,
-            with_genres: query
+            with_genres: query,
+            include_adult: false
             }
         }).then(function(result) {
             
@@ -63,9 +63,12 @@ app.getRecipes = function(query) {
 
 
 // passing in the genre ID
-app.getMovies('28');
 
-app.getRecipes('casserole');
+
+// app.getMovies('28');
+
+// app.getRecipes('casserole');
+
 
 // 5. Function to display movie array // LINE 27 is narrowing it down to one result //
 // movieApp.displayMovieArray = function(movieResultArray) {
@@ -79,19 +82,32 @@ app.getRecipes('casserole');
 // }
 
 
+
+$('form').on('submit', function (e) {
+    e.preventDefault();
+    app.usersGenreChoice = $('#genreSearch').val();
+    console.log(app.usersGenreChoice);
+    app.usersFoodChoice = $('#foodSearch').val();
+    console.log(app.usersFoodChoice);
+    app.getMovies(app.usersGenreChoice)
+    app.getRecipes(app.usersFoodChoice)
+})
+
+
+
+
+
 // 1. doc ready //
 $(function () {
     console.log('doc ready');
-    movieApp.init();
+    // getMovies.init();
 })
 
 
 // for (let i = 0; i < displayMovieArray.length; i++) {
 // }
 
-
 // const genres = ["Horror", "Comedy", "Drama", "Action", "Suspense", "Documentary"];
-
 
 // genres.forEach((genre) => {
 //     $(".movieGenres").append("<p>" + genre + "</p>");
