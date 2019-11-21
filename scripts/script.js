@@ -46,7 +46,7 @@ app.getRecipes = function(query) {
         method: 'GET', 
         dataType: 'json', 
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         data: {
             apiKey: app.recipeKey,
@@ -100,7 +100,11 @@ $('form').on('submit', function (e) {
 // 1. doc ready //
 $(function () {
     console.log('doc ready');
+<<<<<<< HEAD
     // getMovies.init();
+=======
+    // movieApp.init();
+>>>>>>> 7a8a0f703637e9a4bb41a2deb4782badd4fa986c
 })
 
 
