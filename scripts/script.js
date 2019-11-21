@@ -78,10 +78,10 @@ app.getRecipes = function(query) {
         
 $('form').on('submit', function (e) {
     e.preventDefault();
-    app.usersGenreChoice = parseInt($('#genreSearch').val());
+    app.usersGenreChoice = parseInt($('#genre-search').val());
     console.log(app.usersGenreChoice);
 
-    app.usersFoodChoice = $('#foodSearch').val();
+    app.usersFoodChoice = $('#food-search').val();
     console.log(app.usersFoodChoice);
 
     // app.getMovies(app.usersGenreChoice);
@@ -94,16 +94,18 @@ $('form').on('submit', function (e) {
 
 
 
+            $('.movie-results').empty();
             for (let i = 0; i < 4; i++) {
-                $('.movieResults').append(`
+                $('.movie-results').append(`
                 <p>${movieChoices[0].results[i].title}</p>
                 <p>${movieChoices[0].results[i].overview}</p>
                 <p><img src="${app.movieImgUrl}${movieChoices[0].results[i].poster_path}"> This is movieUrl, poster_path</p>
             `);
             }
 
+            $('.recipe-results').empty();
             for (let i = 0; i < 4; i++) {
-            $('.recipeResults').append(`
+            $('.recipe-results').append(`
                 <p>${recipeChoices[0].recipes[i].title}</p>
                 <p><img src="${recipeChoices[0].recipes[i].image}"></p>
                 <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>

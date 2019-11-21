@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>impressYourDate</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
     <header>
-
+        <div class="first-page">
+            <h1>TITLE - ADD LATER</h1>
+        </div>
     </header>
 
     <main>
         <section id="#form">
             <form>
-                <label for="genreSearch">Choose your genre!</label>
-                <select id="genreSearch" name="genreSearch">
-                    <option value="28">Action</option>
-                    <option value="12">Adventure</option>
-                    <option value="16">Animation</option>
-                    <option value="35">Comedy</option>
-                    <option value="80">Crime</option>
-                    <option value="99">Documentary</option>
-                    <option value="18">Drama</option>
-                    <option value="14">Fantasy</option>
-                    <option value="36">History</option>
-                    <option value="27">Horror</option>
-                    <option value="9648">Mystery</option>
-                    <option value="10749">Romance</option>
-                    <option value="878">Science Fiction</option>
-                    <option value="53">Thriller</option>
-                </select>
-
-                <label for="foodSearch">Find some recipes!</label>
-                <input type="text" id="foodSearch" name="foodSearch">
-                <button type="submit">Get me my stuff to impress my date!</button>
+                <div class="flex-container">
+                    <div>
+                        <label for="genre-search">Choose your genre!</label>
+                        <select id="genre-search" name="genre-search">
+                            <option value="28">Action</option>
+                            <option value="12">Adventure</option>
+                            <option value="16">Animation</option>
+                            <option value="35">Comedy</option>
+                            <option value="80">Crime</option>
+                            <option value="99">Documentary</option>
+                            <option value="18">Drama</option>
+                            <option value="14">Fantasy</option>
+                            <option value="36">History</option>
+                            <option value="27">Horror</option>
+                            <option value="9648">Mystery</option>
+                            <option value="10749">Romance</option>
+                            <option value="878">Science Fiction</option>
+                            <option value="53">Thriller</option>
+                        </select>
+                    </div>
+                    <div>
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div>
+                        <label for="food-search">Find some recipes!</label>
+                        <input type="text" id="food-search" name="food-search">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Get me my stuff to impress my date!</button>
+                </div>
             </form>
 
         </section>
 
         <section id="results">
-            <div class="movieResults"></div>
-            <div class="recipeResults"></div>
+            <div class="first-page">
+                <div class="movie-results"></div>
+                <div class="recipe-results"></div>
+            </div>
 
         </section>
     </main>
@@ -56,4 +73,5 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src="./scripts/script.js"></script>
 </body>
+
 </html>
