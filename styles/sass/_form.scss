@@ -1,0 +1,22 @@
+.icon-container {
+    width: 150px;
+    text-align: center;
+}
+
+.genre-search-container {
+    text-align: right;
+}
+
+.food-search-container {
+    text-align: left;
+}
+
+.genre-search-container,
+.food-search-container {
+    width: calc(50% - 75px);
+}
+
+select[name="genre-search"],
+input[name="food-search"] {
+    width: 400px;
+}

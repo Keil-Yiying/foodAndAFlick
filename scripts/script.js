@@ -108,6 +108,7 @@ $('form').on('submit', function (e) {
             $('.recipe-results').append(`
                 <p>${recipeChoices[0].recipes[i].title}</p>
                 <p><img src="${recipeChoices[0].recipes[i].image}"></p>
+                <p>Wine Pairings: ${recipeChoices[0].recipes[i].winePairing.pairedWines} << this is an array (need to loop through to print on page)</p>
                 <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>
             `);
             }

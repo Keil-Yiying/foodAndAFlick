@@ -1,0 +1,18 @@
+.movie-results,
+.recipe-results {
+    width: calc(50% - 30px);
+}
+
+.movie-card,
+.recipe-card {
+    width: calc(50% - 20px);
+}
+
+.movie-img,
+.recipe-img {
+    width: 100%;
+
+    img {
+        width: 100%;
+    }
+}

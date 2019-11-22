@@ -236,7 +236,7 @@ html {
 }
 
 * {
-  border: .1px solid red;
+  border: 1px solid red;
 }
 
 html {
@@ -247,56 +247,93 @@ body {
   color: black;
   background: #FFE9E9;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.8rem;
-  line-height: 30px;
-  letter-spacing: 0.2px;
+  font-size: 1rem;
 }
 
 h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 3rem;
-  line-height: 50px;
-  margin: 0;
-  width: 500px;
+  line-height: 1.2;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2.2rem;
 }
 
 p {
-  font-size: 2.0rem;
-  padding: 0px 0px;
-  margin: 0px 0px;
+  font-size: 1rem;
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2rem;
   text-align: center;
-  line-height: 30px;
-  padding: 0px 0px;
+  padding: 15px 80px;
+  margin: 30px auto;
 }
 
-movie-img {
-  width: 100%;
-  padding: 0px 0px;
-  margin: 0px 0px;
-  display: block;
+header {
+  height: 50vh;
+  text-align: center;
 }
 
-recipe-img {
-  width: 100%;
-  padding: 0px 0px;
-  margin: 0px 0px;
-  display: block;
+i {
+  font-size: 3rem;
+}
+
+.form-section {
+  height: 50vh;
 }
 
 .flex-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.first-page {
+.icon-container {
+  width: 150px;
   text-align: center;
+}
+
+.genre-search-container {
+  text-align: right;
+}
+
+.food-search-container {
+  text-align: left;
+}
+
+.genre-search-container,
+.food-search-container {
+  width: calc(50% - 75px);
+}
+
+select[name="genre-search"],
+input[name="food-search"] {
+  width: 400px;
+}
+
+.movie-results,
+.recipe-results {
+  width: calc(50% - 30px);
+}
+
+.movie-card,
+.recipe-card {
+  width: calc(50% - 20px);
+}
+
+.movie-img,
+.recipe-img {
+  width: 100%;
+}
+
+.movie-img img,
+.recipe-img img {
+  width: 100%;
 }
