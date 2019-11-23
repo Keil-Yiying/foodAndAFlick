@@ -34,17 +34,18 @@ button {
     margin: 30px auto;
 }
 
-header {
+header,
+.form-section {
     height: 50vh;
+}
+
+header,
+footer {
     text-align: center;
 }
 
 i {
     font-size: 3rem;
-}
-
-.form-section {
-    height: 50vh;
 }
 
 .flex-container {
