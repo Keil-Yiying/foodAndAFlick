@@ -106,4 +106,38 @@ $('form').on('submit', function (e) {
 $(function () {
     console.log('doc ready');
     // movieApp.init();
-})
+
+        // $('icons').hover(function () {
+        //     $(this).find('noColor').stop().animate({ 'opacity': 0 }, 300);
+        // }, function () {
+        //     $(this).find('color').stop().animate({ 'opacity': 1 }, 300);
+        // });
+
+        $('.food-search-container').hover(
+            function(){
+                $('i').removeClass('fa-heart')
+                $('i').addClass('fa-utensils')
+            },
+            function(){
+                $('i').removeClass('fa-utensils')
+                $('i').addClass('fa-heart')
+            })
+
+    $('.genre-search-container').hover(
+        function () {
+            $('i').removeClass('fa-heart')
+            $('i').addClass('fa-film')
+        },
+        function () {
+            $('i').removeClass('fa-film')
+            $('i').addClass('fa-heart')
+        })
+
+
+
+
+
+
+    });
+
+

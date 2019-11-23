@@ -20,3 +20,16 @@ select[name="genre-search"],
 input[name="food-search"] {
     width: 400px;
 }
+
+label {
+    display: block;
+}
+
+input, select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 24px;
+    padding: 15px;
+}
+
