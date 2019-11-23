@@ -63,33 +63,60 @@ $('form').on('submit', function (e) {
             console.log(movieChoices[0], recipeChoices[0]); // remove later
 
             // maybe set up variables for the results to make it more readable
-                // const movie = movieChoices[0].results[i]
-                // const recipe = recipeChoices[0].recipes[i]
-
+            
+            
+            
+            
+            
             // adjust later based on html page
             $('.movie-results').empty();
             for (let i = 0; i < 4; i++) {
-                $('.movie-results').append(`
-                    <p>${movieChoices[0].results[i].title}</p>
-                    <p>${movieChoices[0].results[i].release_date}</p>
-                    <p>${movieChoices[0].results[i].original_language}</p>
-                    <p>${movieChoices[0].results[i].overview}</p>
-                    <p><img src="${app.movieImgUrlBase}${movieChoices[0].results[i].poster_path}" alt="Movie poster for ${movieChoices[0].results[i].title}"> This is movieUrl, poster_path</p>
-                `);
+                const movie = movieChoices[0].results[i];
+                const movieHtml = `
+                    <div class="movie-card">
+                        <div class="movie-img">
+                            <img src="${app.movieImgUrlBase}${movie.poster_path}" alt="Movie poster for ${movie.title}">
+                        </div>
+                        <div class="card-text">
+                            <p class="card-title">${movie.title} <span class="movie-year">${movie.release_date}</span></p>
+                            <p>${movie.overview}</p>                          
+                        </div>
+                    </div>
+                `;
+                $('.movie-results').append(movieHtml);
             }
-
+            
             // adjust later based on html page
             $('.recipe-results').empty();
             for (let i = 0; i < 4; i++) {
-            $('.recipe-results').append(`
-                    <p>${recipeChoices[0].recipes[i].title}</p>
-                    <p><img src="${recipeChoices[0].recipes[i].image}" alt="${recipeChoices[0].recipes[i].title}"></p>
-                    <p>Ready in ${recipeChoices[0].recipes[i].readyInMinutes}</p>
-                    <p>Prep minutes ${recipeChoices[0].recipes[i].preparationMinutes}</p>
-                    <p>Cooking minutes ${recipeChoices[0].recipes[i].cookingMinutes}</p>
-                    <p>Wine Pairings: ${recipeChoices[0].recipes[i].winePairing.pairedWines} << this is an array (need to loop through to print on page)</p>
-                    <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>
-                `);
+                const recipe = recipeChoices[0].recipes[i];
+                
+                // loop for getting wine pairings
+
+                // const winePairingList = recipe.winePairings.pairedWines;
+
+                // if (winePairingList == false) {
+                //     const recipeWinePairings = ` `;
+                // } else {
+                //     for (let i = 0; i < winePairingList.length; i++ ) {
+                //         winePairingList[i];
+                //     }
+                // }
+
+                const recipeHtml = `
+                    <div class="recipe-card">
+                        <div class="recipe-img">
+                            <img src="${recipe.image}" alt="${recipe.title}">
+                        </div>
+                        <div class="card-text">
+                            <p class="card-title">${recipe.title}</p>
+                            <p>Ready in ${recipe.readyInMinutes} minutes</p>
+                            <p>Number of steps: ${recipe.analyzedInstructions[0].steps.length}</p>
+                            <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
+                        </div>
+                    </div>
+                `;
+                $('.recipe-results').append(recipeHtml);
             }
         })
         .fail(function(error) {

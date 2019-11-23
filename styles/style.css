@@ -297,18 +297,53 @@ footer {
           justify-content: space-between;
 }
 
+.display-none {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+}
+
 i {
   font-size: 3.5rem;
 }
 
 .icon-container {
-  width: 100px;
+  width: 20%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 10px;
+}
+
+@media (max-width: 767px) {
+  .icon-container {
+    margin: 0 auto;
+    padding: 30px;
+  }
+}
+
+.genre-search-container,
+.food-search-container {
+  width: 40%;
+}
+
+@media (max-width: 767px) {
+  .genre-search-container,
+  .food-search-container {
+    width: 100%;
+  }
 }
 
 label {
@@ -320,13 +355,20 @@ label {
   text-align: right;
 }
 
+@media (max-width: 767px) {
+  .genre-search-container {
+    text-align: center;
+  }
+}
+
 .food-search-container {
   text-align: left;
 }
 
-.genre-search-container,
-.food-search-container {
-  width: calc(50% - 75px);
+@media (max-width: 767px) {
+  .food-search-container {
+    text-align: center;
+  }
 }
 
 input,
@@ -336,11 +378,7 @@ select {
   border-radius: 25px;
   padding: 15px;
   background: #fff;
-}
-
-select[name="genre-search"],
-input[name="food-search"] {
-  width: 400px;
+  width: 100%;
 }
 
 select {
@@ -349,9 +387,8 @@ select {
 
 .results-container {
   width: calc(50% - 30px);
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
 
 .movie-results,
@@ -397,6 +434,14 @@ select {
 
 .card-text {
   padding: 0 20px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-title span {
+  font-size: 0.7rem;
 }
 
 h3 {

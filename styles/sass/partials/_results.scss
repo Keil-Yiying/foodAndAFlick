@@ -1,7 +1,6 @@
 .results-container {
     width: calc(50% - 30px);
-    align-items: flex-start;
-    
+    align-content: flex-start;
 }
 
 .movie-results,
@@ -37,6 +36,14 @@
 
 .card-text {
     padding: 0 20px;
+}
+
+.card-title {
+    font-weight: bold;
+
+    span {
+        font-size: 0.7rem;
+    }
 }
 
 h3 {

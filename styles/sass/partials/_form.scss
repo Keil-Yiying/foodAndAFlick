@@ -1,11 +1,35 @@
+form {
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        align-content: center;
+    }
+}
+
 i {
     font-size: 3.5rem;
 }
 
 .icon-container {
-    width: 100px;
+    width: 20%;
     justify-content: center;
     align-items: center;
+    padding: 0 10px;
+
+    @media (max-width: 767px) {
+        margin: 0 auto;
+        padding: 30px;
+    }
+}
+
+
+.genre-search-container,
+.food-search-container {
+    width: 40%;
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
 }
 
 label {
@@ -15,17 +39,19 @@ label {
 
 .genre-search-container {
     text-align: right;
+
+    @media (max-width: 767px) {
+        text-align: center;
+    }
 }
 
 .food-search-container {
     text-align: left;
-}
 
-.genre-search-container,
-.food-search-container {
-    width: calc(50% - 75px);
+    @media (max-width: 767px) {
+        text-align: center;
+    }
 }
-
 input, 
 select {
     -moz-appearance: none;
@@ -34,12 +60,13 @@ select {
     border-radius: 25px;
     padding: 15px;
     background: #fff;
+    width: 100%;
 }
 
-select[name="genre-search"],
-input[name="food-search"] {
-    width: 400px;
-}
+// select[name="genre-search"],
+// input[name="food-search"] {
+//     width: 100%;
+// }
 
 
 select {
