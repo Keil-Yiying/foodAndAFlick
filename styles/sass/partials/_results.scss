@@ -1,6 +1,11 @@
+.results-container {
+    width: calc(50% - 30px);
+    align-items: flex-start;
+    
+}
+
 .movie-results,
 .recipe-results {
-    width: calc(50% - 30px);
     align-items: flex-start;
         @media (max-width: 600px) {
         width: 100%;

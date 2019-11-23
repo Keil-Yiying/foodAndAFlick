@@ -331,6 +331,8 @@ label {
 
 input,
 select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
   border-radius: 25px;
   padding: 15px;
   background: #fff;
@@ -345,9 +347,18 @@ select {
   background: #fff, url("./assets/arrow-down.png") no-repeat 100% 50%;
 }
 
+.results-container {
+  width: calc(50% - 30px);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .movie-results,
 .recipe-results {
-  width: calc(50% - 30px);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 @media (max-width: 600px) {
