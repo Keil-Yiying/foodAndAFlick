@@ -1,6 +1,16 @@
+i {
+    font-size: 3.5rem;
+}
+
 .icon-container {
-    width: 150px;
-    text-align: center;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
 }
 
 .genre-search-container {
@@ -16,20 +26,22 @@
     width: calc(50% - 75px);
 }
 
+input, 
+select {
+    // -moz-appearance: none;
+    // -webkit-appearance: none;
+    // appearance: none;
+    border-radius: 25px;
+    padding: 15px;
+    background: #fff;
+}
+
 select[name="genre-search"],
 input[name="food-search"] {
     width: 400px;
 }
 
-label {
-    display: block;
-}
 
-input, select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 24px;
-    padding: 15px;
+select {
+    background: #fff, url('./assets/arrow-down.png') no-repeat 100% 50%;
 }
-

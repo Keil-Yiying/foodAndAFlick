@@ -1,6 +1,6 @@
-* {
-    border: 1px solid red;
-}
+// * {
+//     border: 1px solid red;
+// }
 
 html {
     font-size: 125%;
@@ -8,10 +8,10 @@ html {
 
 body {
     color: black;
-    background: #FFE9E9;
+    background: #6c0b11;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    color: #4F2D2A;
+    color: #fff;
 }
 
 h1 {
@@ -45,54 +45,8 @@ footer {
     text-align: center;
 }
 
-i {
-    font-size: 3rem;
-}
-
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-.icons {
-    display: block;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100px;
-}
-
-.icons .noColor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.icons .color {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-select{
-background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 100% 50%;
-
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -webkit-border-radius: 0px;
-    appearance: none;
-    outline-width: 0;
-    
-    padding: 10px 10px 10px 5px;
-    // display: block;
-    width: 10em;
-    border: none;
-    font-size: 1rem;
-    
-    border-bottom: 1px solid #757575;
-  }
-
-
-

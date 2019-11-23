@@ -7,6 +7,10 @@
 .recipe-card {
     width: calc(50% - 20px);
     background: #FFE0BE;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    color: #502f2c;
 }
 
 .movie-img,
@@ -16,4 +20,8 @@
     img {
         width: 100%;
     }
+}
+
+.card-text {
+    padding: 0 20px;
 }
