@@ -1,6 +1,10 @@
 .movie-results,
 .recipe-results {
     width: calc(50% - 30px);
+    align-items: flex-start;
+        @media (max-width: 600px) {
+        width: 100%;
+    }
 }
 
 .movie-card,
@@ -11,6 +15,10 @@
     overflow: hidden;
     margin-bottom: 30px;
     color: #502f2c;
+
+        @media (max-width: 1100px) {
+        width: 100%;
+    }
 }
 
 .movie-img,
@@ -24,4 +32,9 @@
 
 .card-text {
     padding: 0 20px;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
 }

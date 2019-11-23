@@ -239,16 +239,23 @@ html {
   font-size: 125%;
 }
 
+.wrapper {
+  max-width: 1600px;
+  width: 80%;
+  margin: 0 auto;
+}
+
 body {
   color: black;
   background: #6c0b11;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Muli', sans-serif;
   font-size: 1rem;
   color: #fff;
 }
 
 h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
   font-size: 3rem;
   line-height: 1.2;
   width: 100%;
@@ -265,7 +272,8 @@ p {
 button {
   text-align: center;
   padding: 15px 80px;
-  margin: 30px auto;
+  margin: 120px auto 70px auto;
+  border-radius: 25px;
 }
 
 header,
@@ -342,6 +350,13 @@ select {
   width: calc(50% - 30px);
 }
 
+@media (max-width: 600px) {
+  .movie-results,
+  .recipe-results {
+    width: 100%;
+  }
+}
+
 .movie-card,
 .recipe-card {
   width: calc(50% - 20px);
@@ -350,6 +365,13 @@ select {
   overflow: hidden;
   margin-bottom: 30px;
   color: #502f2c;
+}
+
+@media (max-width: 1100px) {
+  .movie-card,
+  .recipe-card {
+    width: 100%;
+  }
 }
 
 .movie-img,
@@ -364,4 +386,9 @@ select {
 
 .card-text {
   padding: 0 20px;
+}
+
+h3 {
+  width: 100%;
+  text-align: center;
 }

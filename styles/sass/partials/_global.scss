@@ -6,16 +6,23 @@ html {
     font-size: 125%;
 }
 
+.wrapper {
+    max-width: 1600px;
+    width: 80%;
+    margin: 0 auto;
+}
+
 body {
     color: black;
     background: #6c0b11;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-size: 1rem;
     color: #fff;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif; // change later
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
     font-size: 3rem;
     line-height: 1.2;
     width: 100%;
@@ -32,7 +39,8 @@ p {
 button {
     text-align: center;
     padding: 15px 80px;
-    margin: 30px auto;
+    margin: 120px auto 70px auto;
+    border-radius: 25px;
 }
 
 header,
