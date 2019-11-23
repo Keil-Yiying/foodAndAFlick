@@ -8,7 +8,7 @@ html {
 
 .wrapper {
     max-width: 1600px;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
 }
 
@@ -39,8 +39,8 @@ p {
 button {
     text-align: center;
     padding: 15px 80px;
-    margin: 120px auto 70px auto;
     border-radius: 25px;
+    margin: 0 auto;
 }
 
 header,
@@ -59,6 +59,6 @@ footer {
     justify-content: space-between;
 }
 
-.display-none {
-    display: none;
-}
+// .display-none {
+//     display: none;
+// }

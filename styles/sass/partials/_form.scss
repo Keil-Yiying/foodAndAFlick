@@ -52,6 +52,7 @@ label {
         text-align: center;
     }
 }
+
 input, 
 select {
     -moz-appearance: none;
@@ -63,12 +64,10 @@ select {
     width: 100%;
 }
 
-// select[name="genre-search"],
-// input[name="food-search"] {
-//     width: 100%;
-// }
-
-
 select {
     background: #fff, url('./assets/arrow-down.png') no-repeat 100% 50%;
+}
+
+button[type="submit"] {
+    margin: 120px auto 70px auto;
 }

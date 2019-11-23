@@ -241,7 +241,7 @@ html {
 
 .wrapper {
   max-width: 1600px;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -272,8 +272,8 @@ p {
 button {
   text-align: center;
   padding: 15px 80px;
-  margin: 120px auto 70px auto;
   border-radius: 25px;
+  margin: 0 auto;
 }
 
 header,
@@ -295,10 +295,6 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.display-none {
-  display: none;
 }
 
 @media (max-width: 767px) {
@@ -383,6 +379,10 @@ select {
 
 select {
   background: #fff, url("./assets/arrow-down.png") no-repeat 100% 50%;
+}
+
+button[type="submit"] {
+  margin: 120px auto 70px auto;
 }
 
 .results-container {

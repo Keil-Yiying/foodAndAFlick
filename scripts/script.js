@@ -57,9 +57,19 @@ app.getRecipes = function(query) {
 
 // SET DEFAULT FOR DROPDOWN??? RESETIING WITH .val('') just empties it
 
+// SMALLEST MEDIA QUERY - PLUS LINKS FOR MOVIES & RESULTS IF ALL IN ONE LIST
+
+// BIGGEST (DEFAULT) SIZE- MAYBE IMAGES SHOULD BE TO THE LEFT
+
+// FLIP FOOD & MOVIE PLACEMENTS
+
 // NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!!
 
+// NEED TO ADD IN RESULTS <h3>S!!!!!
+// NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top)
+
 // ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
+    // find a nice bg image for styling
 
 
         
@@ -86,6 +96,9 @@ app.init = function() {
             .then(function(movieChoices, recipeChoices) {
                 console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
                 
+                $('h3').removeClass('display-none');
+                $('.search-again').removeClass('display-none');
+
                 // printing movies to page
                 $('.movie-results').empty();
                 for (let i = 0; i < 4; i++) {
@@ -121,7 +134,7 @@ app.init = function() {
                     } else {
                         for (let i = 0; i < dishTypeList.length; i++ ) {
                             if (i === (dishTypeList.length - 1)) {
-                                dishTypeHtml += `${dishTypeList[i]}. </p>`;
+                                dishTypeHtml += `${dishTypeList[i]}</p>`;
                                 console.log(dishTypeHtml); // REMOVE
                             } else {
                                 dishTypeHtml += `${dishTypeList[i]}, `;
@@ -138,7 +151,7 @@ app.init = function() {
                     } else {
                         for (let i = 0; i < winePairingList.length; i++ ) {
                             if (i === (winePairingList.length - 1)) {
-                                wineHtml += `${winePairingList[i]}. </p>`;
+                                wineHtml += `${winePairingList[i]}</p>`;
                                 console.log(wineHtml); // REMOVE
                             } else {
                                 wineHtml += `${winePairingList[i]}, `;
