@@ -61,10 +61,6 @@ $('form').on('submit', function (e) {
     $.when(app.getMovies(app.usersGenreChoice), app.getRecipes(app.usersFoodChoice))
         .then(function(movieChoices, recipeChoices) {
             console.log(movieChoices[0], recipeChoices[0]); // remove later
-
-            // maybe set up variables for the results to make it more readable
-            
-            
             
             
             
@@ -90,18 +86,27 @@ $('form').on('submit', function (e) {
             $('.recipe-results').empty();
             for (let i = 0; i < 4; i++) {
                 const recipe = recipeChoices[0].recipes[i];
+                console.log(recipe);
+                console.log(recipe.winePairing.pairedWines);
                 
-                // loop for getting wine pairings
-
-                // const winePairingList = recipe.winePairings.pairedWines;
-
-                // if (winePairingList == false) {
-                //     const recipeWinePairings = ` `;
-                // } else {
-                //     for (let i = 0; i < winePairingList.length; i++ ) {
-                //         winePairingList[i];
-                //     }
-                // }
+                /* 
+                    Getting wine pairings for each recipe, if available.
+                */
+                const winePairingList = recipe.winePairing.pairedWines;
+                let wineHtml = `<p>Wine Pairings: `;
+                if (winePairingList === undefined) {
+                    wineHtml = '';
+                } else {
+                    for (let i = 0; i < winePairingList.length; i++ ) {
+                        if (i === (winePairingList.length - 1)) {
+                            wineHtml += `${winePairingList[i]}. </p>`;
+                            console.log(wineHtml);
+                        } else {
+                            wineHtml += `${winePairingList[i]}, `;
+                            console.log(wineHtml);
+                        } 
+                    }
+                }
 
                 const recipeHtml = `
                     <div class="recipe-card">
@@ -112,6 +117,7 @@ $('form').on('submit', function (e) {
                             <p class="card-title">${recipe.title}</p>
                             <p>Ready in ${recipe.readyInMinutes} minutes</p>
                             <p>Number of steps: ${recipe.analyzedInstructions[0].steps.length}</p>
+                            ${wineHtml}
                             <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
                         </div>
                     </div>
