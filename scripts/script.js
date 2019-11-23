@@ -7,23 +7,17 @@
 // API returns 5~10 results for each (number might depend on app design)
 // append results on html page with images (maybe 4-6 for each)
 
-// 2. set up main param //
+
 const app = {};
 
 app.movieKey = '38f9a8f5c677f0356adca226f357b762';
 app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
-app.movieImgUrl = `https://image.tmdb.org/t/p/w500`;
+app.movieImgUrlBase = `https://image.tmdb.org/t/p/w500`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
-app.recipeUrl = `https://api.spoonacular.com/recipes/search`; // general search
-app.recipeUrl2 = `https://api.spoonacular.com/recipes/random`; //random
-
-// app.usersGenreChoice;
-
-// app.usersFoodChoice;
+app.recipeUrl = `https://api.spoonacular.com/recipes/random`; 
 
 
-// 4. function to get information //
 app.getMovies = function(query) {
     return $.ajax({
         url: app.movieUrl,
@@ -39,7 +33,7 @@ app.getMovies = function(query) {
 
 app.getRecipes = function(query) {
     return $.ajax({ 
-        url: app.recipeUrl2, 
+        url: app.recipeUrl, 
         method: 'GET', 
         dataType: 'json', 
         headers: {
@@ -51,76 +45,61 @@ app.getRecipes = function(query) {
             number: 4
         }
     })
-
 }
 
-
-// passing in the genre ID
-
-
-// app.getMovies('28');
-
-// app.getRecipes('casserole');
-
-
-// 5. Function to display movie array // LINE 27 is narrowing it down to one result //
-// movieApp.displayMovieArray = function(movieResultArray) {
-    //     console.log('display array', movieResultArray.genres);
-    // };
-    
-    // // 3. creat init to start the app //
-    // movieApp.init = function() {
-        //     console.log('test1');
-        //     movieApp.getMovieInformation();
-        // }
-        
+// SHOULD WE ADD A LOADING CIRCLE CUZ THE AJAX CALLS TAKE A FEW SECONDS??????
         
         
 $('form').on('submit', function (e) {
     e.preventDefault();
     app.usersGenreChoice = parseInt($('#genre-search').val());
-    console.log(app.usersGenreChoice);
+    console.log(app.usersGenreChoice);  // remove later
 
     app.usersFoodChoice = $('#food-search').val();
-    console.log(app.usersFoodChoice);
-
-    // app.getMovies(app.usersGenreChoice);
-    // app.getRecipes(app.usersFoodChoice);
+    console.log(app.usersFoodChoice); // remove later
 
     $.when(app.getMovies(app.usersGenreChoice), app.getRecipes(app.usersFoodChoice))
         .then(function(movieChoices, recipeChoices) {
-            console.log(movieChoices[0], recipeChoices[0]);
+            console.log(movieChoices[0], recipeChoices[0]); // remove later
 
+            // maybe set up variables for the results to make it more readable
+                // const movie = movieChoices[0].results[i]
+                // const recipe = recipeChoices[0].recipes[i]
 
-
-
+            // adjust later based on html page
             $('.movie-results').empty();
             for (let i = 0; i < 4; i++) {
                 $('.movie-results').append(`
-                <p>${movieChoices[0].results[i].title}</p>
-                <p>${movieChoices[0].results[i].overview}</p>
-                <p><img src="${app.movieImgUrl}${movieChoices[0].results[i].poster_path}"> This is movieUrl, poster_path</p>
-            `);
+                    <p>${movieChoices[0].results[i].title}</p>
+                    <p>${movieChoices[0].results[i].release_date}</p>
+                    <p>${movieChoices[0].results[i].original_language}</p>
+                    <p>${movieChoices[0].results[i].overview}</p>
+                    <p><img src="${app.movieImgUrlBase}${movieChoices[0].results[i].poster_path}" alt="Movie poster for ${movieChoices[0].results[i].title}"> This is movieUrl, poster_path</p>
+                `);
             }
 
+            // adjust later based on html page
             $('.recipe-results').empty();
             for (let i = 0; i < 4; i++) {
             $('.recipe-results').append(`
-                <p>${recipeChoices[0].recipes[i].title}</p>
-                <p><img src="${recipeChoices[0].recipes[i].image}"></p>
-                <p>Wine Pairings: ${recipeChoices[0].recipes[i].winePairing.pairedWines} << this is an array (need to loop through to print on page)</p>
-                <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>
-            `);
+                    <p>${recipeChoices[0].recipes[i].title}</p>
+                    <p><img src="${recipeChoices[0].recipes[i].image}" alt="${recipeChoices[0].recipes[i].title}"></p>
+                    <p>Ready in ${recipeChoices[0].recipes[i].readyInMinutes}</p>
+                    <p>Prep minutes ${recipeChoices[0].recipes[i].preparationMinutes}</p>
+                    <p>Cooking minutes ${recipeChoices[0].recipes[i].cookingMinutes}</p>
+                    <p>Wine Pairings: ${recipeChoices[0].recipes[i].winePairing.pairedWines} << this is an array (need to loop through to print on page)</p>
+                    <p><a href="${recipeChoices[0].recipes[i].sourceUrl}">Go to recipe</p>
+                `);
             }
-
         })
         .fail(function(error) {
-            console.log(error);
+            console.log(error);   // what to do about this??
         });
 })
         
         
-
+// NEED INIT
+    // should contain event handlers
 
 
 // 1. doc ready //
@@ -128,16 +107,3 @@ $(function () {
     console.log('doc ready');
     // movieApp.init();
 })
-
-
-// for (let i = 0; i < displayMovieArray.length; i++) {
-// }
-
-// const genres = ["Horror", "Comedy", "Drama", "Action", "Suspense", "Documentary"];
-
-// genres.forEach((genre) => {
-//     $(".movieGenres").append("<p>" + genre + "</p>");
-// });
-
-
-
