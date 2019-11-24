@@ -297,6 +297,12 @@ footer {
           justify-content: space-between;
 }
 
+form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @media (max-width: 767px) {
   form {
     -webkit-box-orient: vertical;
@@ -308,11 +314,19 @@ footer {
   }
 }
 
-i {
-  font-size: 3.5rem;
+.fa-circle {
+  color: white;
+  font-size: 6rem;
 }
 
-.icon-container {
+.fa-heart,
+.fa-utensils,
+.fa-film {
+  font-size: 3rem;
+  color: #6c0b11;
+}
+
+.fa-stack {
   width: 20%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -324,7 +338,7 @@ i {
 }
 
 @media (max-width: 767px) {
-  .icon-container {
+  .fa-stack {
     margin: 0 auto;
     padding: 30px;
   }

@@ -66,12 +66,11 @@ app.getRecipes = function(query) {
 
 // BIGGEST (DEFAULT) SIZE- MAYBE IMAGES SHOULD BE TO THE LEFT
 
-// FLIP FOOD & MOVIE PLACEMENTS
 
 // NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!!
 
-// NEED TO ADD IN RESULTS <h3>S!!!!!
-// NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top)
+
+// NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top) - MAKE THE BUTTON WORK
 
 // ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
     // find a nice bg image for styling
@@ -204,23 +203,23 @@ app.init = function() {
     // changing the heart icon to utensils on hover when searching recipes
     $('.food-search-container').hover(
         function(){
-            $('i').removeClass('fa-heart');
-            $('i').addClass('fa-utensils');
+            $('.icon').removeClass('fa-heart');
+            $('.icon').addClass('fa-utensils');
         },
         function(){
-            $('i').removeClass('fa-utensils');
-            $('i').addClass('fa-heart');
+            $('.icon').removeClass('fa-utensils');
+            $('.icon').addClass('fa-heart');
         })
 
     // changing the heart icon to film on hover when searching movies
     $('.genre-search-container').hover(
         function () {
-            $('i').removeClass('fa-heart');
-            $('i').addClass('fa-film');
+            $('.icon').removeClass('fa-heart');
+            $('.icon').addClass('fa-film');
         },
         function () {
-            $('i').removeClass('fa-film');
-            $('i').addClass('fa-heart');
+            $('.icon').removeClass('fa-film');
+            $('.icon').addClass('fa-heart');
         })
 
 }

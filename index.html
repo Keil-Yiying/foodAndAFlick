@@ -27,9 +27,11 @@
                     <input type="text" id="food-search" name="food-search" placeholder="Try 'pizza' or 'vegetarian'">
                 </div>
                 
-                <div class="icon-container flex-container">
-                    <i class="fas fa-heart" alt="Default heart icon" aria-hidden></i>
-                </div>
+                <!-- using Font Awesome's stacking code -->
+                <span class="fa-stack flex-container" style="vertical-align: top;">
+                    <i class="fas fa-circle fa-stack-1x" aria-hidden></i>
+                    <i class="icon fas fa-heart fa-stack-2x fa-inverse" aria-hidden></i>
+                </span>
 
                 <div class="genre-search-container">
                     <label for="genre-search">Choose your movie genre!</label>
@@ -50,7 +52,6 @@
                         <option value="53">Thriller</option>
                     </select>
                 </div>
-
 
                 <button type="submit">Submit</button>
             </form>
