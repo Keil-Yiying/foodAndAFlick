@@ -385,6 +385,7 @@ input,
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   border-radius: 25px;
   padding: 15px;
   background: #fff;
@@ -392,7 +393,10 @@ select {
 }
 
 select {
-  background: #fff, url("./assets/arrow-down.png") no-repeat 100% 50%;
+  background-color: #fff;
+  background-image: url("../assets/arrow-down.png");
+  background-repeat: no-repeat;
+  background-position: 96% center;
 }
 
 button[type="submit"] {
@@ -429,7 +433,7 @@ button[type="submit"] {
   color: #502f2c;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1200px) {
   .movie-card,
   .recipe-card {
     width: 100%;

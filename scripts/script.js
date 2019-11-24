@@ -61,13 +61,19 @@ app.getRecipes = function(query) {
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // SET DEFAULT FOR DROPDOWN??? RESETIING WITH .val('') just empties it
+// ALSO STYLE IT!!!!!!!!!!
 
 // SMALLEST MEDIA QUERY - PLUS LINKS FOR MOVIES & RESULTS IF ALL IN ONE LIST
 
 // BIGGEST (DEFAULT) SIZE- MAYBE IMAGES SHOULD BE TO THE LEFT
 
 
-// NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!!
+// NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!! - OR, if one doesn't return anything
+    // so far I used an alert but 
+
+// weird error-handling thing:
+    // no dish type = empty array, using == false works to catch it
+    // no wine pairing = empty obje, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
 
 
 // NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top) - MAKE THE BUTTON WORK
@@ -103,7 +109,7 @@ app.init = function() {
         const releaseDate = `${year}-${month}-${day}`;
 
         $('#food-search').val(''); // clearing inputs after submit
-        $('#genre-search').val('');
+        $('#genre-search').val(28);
 
         // using Promises to wait for both movie & recipe API calls
         $.when(app.getMovies(app.usersGenreChoice, moviePage, releaseDate), app.getRecipes(app.usersFoodChoice))
@@ -119,6 +125,10 @@ app.init = function() {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);
                     console.log(movieYear); // REMOVE!!!!
+
+                    const movieBlurb = movie.overview.slice(0, 251);
+                    console.log(movieBlurb);
+
                     const movieHtml = `
                         <div class="movie-card">
                             <div class="movie-img">
@@ -126,8 +136,7 @@ app.init = function() {
                             </div>
                             <div class="card-text">
                                 <p class="card-title">${movie.title} <span class="movie-year">(${movieYear})</span></p>
-                                <p>${movie.overview}</p>                      
-                                <p><a href="${app.movieInfoUrl}${movie.id}">Read more</a></p>
+                                <p>${movieBlurb}... <a href="${app.movieInfoUrl}${movie.id}">Read more</a></p>
                             </div>
                         </div>
                     `;
@@ -144,7 +153,7 @@ app.init = function() {
                     // Getting dish types for each recipe, if available.
                     const dishTypeList = recipe.dishTypes;
                     let dishTypeHtml = `<p>Dish Type(s): `;
-                    if (dishTypeList === undefined) {
+                    if (dishTypeList == false) {
                         dishTypeHtml = '';
                     } else {
                         for (let i = 0; i < dishTypeList.length; i++ ) {
@@ -161,7 +170,7 @@ app.init = function() {
                     // Getting wine pairings for each recipe, if available.
                     const winePairingList = recipe.winePairing.pairedWines;
                     let wineHtml = `<p>Wine Pairing(s): `;
-                    if (winePairingList === undefined) {
+                    if (winePairingList == undefined) {
                         wineHtml = '';
                     } else {
                         for (let i = 0; i < winePairingList.length; i++ ) {
@@ -195,7 +204,7 @@ app.init = function() {
                 }
             })
             .fail(function(error) {
-                console.log(error);   // what to do about this?? !!!!
+                alert('Sorry, no results found! Please try another search.');
             });
     })
 
@@ -225,7 +234,6 @@ app.init = function() {
 }
 
 
-// 1. doc ready //
 $(function () {
     app.init();
 });
