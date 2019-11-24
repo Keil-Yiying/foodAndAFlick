@@ -5,6 +5,10 @@
 .results-container {
     width: calc(50% - 20px);
     align-content: flex-start;
+
+    @media (max-width: 650px) {
+        width: 100%;
+    }
 }
 
 .movie-results,
@@ -33,9 +37,7 @@
         padding: 0;
         overflow: hidden;
     }
-
 }
-
 
 .movie-img,
 .recipe-img {

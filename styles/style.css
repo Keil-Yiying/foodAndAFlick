@@ -339,7 +339,7 @@ form {
 
 @media (max-width: 767px) {
   .fa-stack {
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 30px;
   }
 }
@@ -411,6 +411,12 @@ button[type="submit"] {
   width: calc(50% - 20px);
   -ms-flex-line-pack: start;
       align-content: flex-start;
+}
+
+@media (max-width: 650px) {
+  .results-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {

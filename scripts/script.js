@@ -61,19 +61,23 @@ app.getRecipes = function(query) {
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // SET DEFAULT FOR DROPDOWN??? RESETIING WITH .val('') just empties it
-// ALSO STYLE IT!!!!!!!!!!
 
-// SMALLEST MEDIA QUERY - PLUS LINKS FOR MOVIES & RESULTS IF ALL IN ONE LIST
+// SMALLEST MEDIA QUERY - MAYBE NEEDS LINKS TO SKIP TO MOVIES? THEN SKIP BACK TO FOODS? I DUNNO @____@;
 
-// BIGGEST (DEFAULT) SIZE- MAYBE IMAGES SHOULD BE TO THE LEFT
+// SUBMIT BUTTON - maybe use position: absolute to keep it at bottom of screen
+    // also needs arrow under for when results load? @________@
+
+// is there a way to use tab/focus to change the icon in the middle?
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 // NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!! - OR, if one doesn't return anything
-    // so far I used an alert but 
+    // so far I used an alert but it also alerts if one result goes wrong while other results load in ok >___<;;;
 
 // weird error-handling thing:
     // no dish type = empty array, using == false works to catch it
-    // no wine pairing = empty obje, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
+    // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
+        // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
 
 
 // NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top) - MAKE THE BUTTON WORK
@@ -173,7 +177,7 @@ app.init = function() {
                     // Getting wine pairings for each recipe, if available.
                     const winePairingList = recipe.winePairing.pairedWines;
                     let wineHtml = `<p>Wine Pairing(s): `;
-                    if (winePairingList == undefined) {
+                    if (winePairingList === undefined) {
                         wineHtml = '';
                     } else {
                         for (let i = 0; i < winePairingList.length; i++ ) {
@@ -231,6 +235,19 @@ app.init = function() {
         function () {
             $('.icon').removeClass('fa-film');
             $('.icon').addClass('fa-heart');
+        })
+
+        //// VVVVVV DOESN'T WORKKKKKKKKK <<<<<<<<<<<<<<<<<<<<<<<<
+    // changing the heart icon on focus / making it work with tabbing
+    $('.food-search-container').focus(function(){
+            $('.icon').removeClass('fa-heart');
+            $('.icon').addClass('fa-utensils');
+        })
+
+    // changing the heart icon to film on hover when searching movies
+    $('.genre-search-container').focus(function () {
+            $('.icon').removeClass('fa-heart');
+            $('.icon').addClass('fa-film');
         })
 
 }
