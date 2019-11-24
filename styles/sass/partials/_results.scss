@@ -1,11 +1,17 @@
+* {
+    border: 1px solid deepskyblue;
+}
+
 .results-container {
-    width: calc(50% - 30px);
+    width: calc(50% - 20px);
     align-content: flex-start;
 }
 
 .movie-results,
 .recipe-results {
-    align-items: flex-start;
+
+    // THIS IS EMPTY!!!!!!!!!!!!!!!!!!! DEAL WITH IT!!!!!!!!!!!
+
         @media (max-width: 600px) {
         width: 100%;
     }
@@ -13,32 +19,75 @@
 
 .movie-card,
 .recipe-card {
-    width: calc(50% - 20px);
+    width: 100%;
+    height: 360px;
+    padding: 20px;
     background: #FFE0BE;
     border-radius: 25px;
-    overflow: hidden;
     margin-bottom: 30px;
     color: #502f2c;
+    align-items: center;
 
-        @media (max-width: 1200px) {
-        width: 100%;
+    @media(max-width: 1200px) {
+        height: auto;
+        padding: 0;
+        overflow: hidden;
     }
+
 }
+
 
 .movie-img,
 .recipe-img {
-    width: 100%;
+    width: 30%;
+
+    @media (max-width: 1200px) {
+        width: 100%;
+    }
 
     img {
         width: 100%;
+        border-radius: 15px;
+
+        @media (max-width: 1200px) {
+            border-radius: 0;
+        }
+    }
+}
+
+.recipe-img {
+    height: 70%;
+
+    @media (max-width: 1200px) {
+        height: auto;
+    }
+
+    img {
+        height: 100%;
+        object-fit: cover;
+
+        @media (max-width: 1200px) {
+            height: auto;
+        }
     }
 }
 
 .card-text {
-    padding: 0 20px;
+    width: 70%;
+    padding-left: 20px;
+
+    @media (max-width: 1200px) {
+        width: 100%;
+        padding: 20px;
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 .card-title {
+    margin-top: 0;
     font-weight: bold;
 
     span {

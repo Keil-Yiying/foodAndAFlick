@@ -81,6 +81,8 @@ app.getRecipes = function(query) {
 // ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
     // find a nice bg image for styling
 
+// SOME RECIPES GO TO 600 MINUTES????? Maybe use an if statement to convert this to hours?????? UX IS !important !!!!!!!!!!!!
+
 
 
 app.init = function() {    
@@ -126,11 +128,12 @@ app.init = function() {
                     const movieYear = movie.release_date.slice(0, 4);
                     console.log(movieYear); // REMOVE!!!!
 
-                    const movieBlurb = movie.overview.slice(0, 251);
-                    console.log(movieBlurb);
+                    // making the movie blurbs a bit shorter so they don't stretch the page
+                    const movieBlurb = movie.overview.slice(0, 231);
+                    console.log(movieBlurb); // REMOVE DIS <<<<
 
                     const movieHtml = `
-                        <div class="movie-card">
+                        <div class="movie-card flex-container">
                             <div class="movie-img">
                                 <img src="${app.movieImgUrl}${movie.poster_path}" alt="Movie poster for ${movie.title}">
                             </div>
@@ -185,15 +188,14 @@ app.init = function() {
                     }
 
                     const recipeHtml = `
-                        <div class="recipe-card">
+                        <div class="recipe-card flex-container">
                             <div class="recipe-img">
                                 <img src="${recipe.image}" alt="${recipe.title}">
                             </div>
                             <div class="card-text">
                                 <p class="card-title">${recipe.title}</p>
                                 <p>Ready in ${recipe.readyInMinutes} minutes</p>
-                                <p>Number of steps: ${recipe.analyzedInstructions[0].steps.length}</p>
-                                <p>Number of ingredients: ${recipe.extendedIngredients.length}</p>
+                                <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
                                 ${dishTypeHtml}
                                 ${wineHtml}
                                 <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
