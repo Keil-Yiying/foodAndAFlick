@@ -23,8 +23,8 @@ i {
 }
 
 
-.genre-search-container,
-.food-search-container {
+.food-search-container,
+.genre-search-container {
     width: 40%;
 
     @media (max-width: 767px) {
@@ -37,7 +37,7 @@ label {
     margin-bottom: 10px;
 }
 
-.genre-search-container {
+.food-search-container {
     text-align: right;
 
     @media (max-width: 767px) {
@@ -45,7 +45,7 @@ label {
     }
 }
 
-.food-search-container {
+.genre-search-container {
     text-align: left;
 
     @media (max-width: 767px) {

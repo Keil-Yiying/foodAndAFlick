@@ -11,15 +11,19 @@ const app = {};
 
 app.movieKey = '38f9a8f5c677f0356adca226f357b762';
 app.movieUrl = `https://api.themoviedb.org/3/discover/movie`;
-app.movieImgUrlBase = `https://image.tmdb.org/t/p/w500`;
+app.movieInfoUrl = `https://www.themoviedb.org/movie/`;
+app.movieImgUrl = `https://image.tmdb.org/t/p/w500`;
 
 app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/random`; 
 
+
+
+
 /*
     AJAX CALLS
 */
-app.getMovies = function(query, page) {
+app.getMovies = function(query, page, releaseDate) {
     return $.ajax({
         url: app.movieUrl,
         method: 'GET',
@@ -28,6 +32,7 @@ app.getMovies = function(query, page) {
             api_key: app.movieKey,
             with_genres: query,
             page: page,
+            'primary_release_date.lte': releaseDate,
             include_adult: false
             }
     })
@@ -72,7 +77,6 @@ app.getRecipes = function(query) {
     // find a nice bg image for styling
 
 
-        
 
 app.init = function() {    
     
@@ -83,16 +87,27 @@ app.init = function() {
         e.preventDefault();
         app.usersFoodChoice = $('#food-search').val();
         app.usersGenreChoice = parseInt($('#genre-search').val());
-        const moviePage = Math.ceil(Math.random() * 100);
+        
         /* 
-        used Math.random() above to add some randomization to the movie results that show up, otherwise they will always end up as the top 4 of that genre that are listed on the API 
+            using Math.random() to add some randomization to the movie results that show up, otherwise they will always return the top 4 of that genre listed on the API 
         */
+        const moviePage = Math.ceil(Math.random() * 100);
+
+
+        /*
+            Getting the current date so the API won't return unreleased movies
+        */
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const day = today.getDate() + 1;
+        const releaseDate = `${year}-${month}-${day}`;
 
         $('#food-search').val(''); // clearing inputs after submit
         $('#genre-search').val('');
 
         // using Promises to wait for both movie & recipe API calls
-        $.when(app.getMovies(app.usersGenreChoice, moviePage), app.getRecipes(app.usersFoodChoice))
+        $.when(app.getMovies(app.usersGenreChoice, moviePage, releaseDate), app.getRecipes(app.usersFoodChoice))
             .then(function(movieChoices, recipeChoices) {
                 console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
                 
@@ -108,11 +123,12 @@ app.init = function() {
                     const movieHtml = `
                         <div class="movie-card">
                             <div class="movie-img">
-                                <img src="${app.movieImgUrlBase}${movie.poster_path}" alt="Movie poster for ${movie.title}">
+                                <img src="${app.movieImgUrl}${movie.poster_path}" alt="Movie poster for ${movie.title}">
                             </div>
                             <div class="card-text">
                                 <p class="card-title">${movie.title} <span class="movie-year">(${movieYear})</span></p>
-                                <p>${movie.overview}</p>                          
+                                <p>${movie.overview}</p>                      
+                                <p><a href="${app.movieInfoUrl}${movie.id}">Read more</a></p>
                             </div>
                         </div>
                     `;
