@@ -63,9 +63,10 @@ app.getRecipes = function(query) {
 // BREAK DOWN EVENT HANDLER - TOO BIG
 
 // SMALLEST MEDIA QUERY - MAYBE NEEDS LINKS TO SKIP TO MOVIES? THEN SKIP BACK TO FOODS? I DUNNO @____@;
+    // can do this by changing a display: none to display: block or whatever upon smallest media query.
 
 // SUBMIT BUTTON - maybe use position: absolute to keep it at bottom of screen
-    // also needs arrow under for when results load? @________@
+    // also needs arrow under for when results load? @________@ - js to show with display-none
 
 // is there a way to use tab/focus to change the icon in the middle?
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,13 +80,11 @@ app.getRecipes = function(query) {
     // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
         // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
 
-
-// NEED A BUTTON UNDER RESULTS IF USER WANTS TO SEARCH AGAIN (take back to top) - MAKE THE BUTTON WORK
-
 // ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
     // find a nice bg image for styling
 
-// SOME RECIPES GO TO 600 MINUTES????? Maybe use an if statement to convert this to hours?????? UX IS !important !!!!!!!!!!!!
+
+// DEAL WITH FOOTER
 
 
 
@@ -143,7 +142,7 @@ app.init = function() {
                     console.log(movieBlurb); // REMOVE DIS <<<<
                     
                     const movieHtml = `
-                        <div class="movie-card flex-container">
+                        <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
                             <div class="movie-img">
                                 <img src="${app.movieImgUrl}${movie.poster_path}" alt="Movie poster for ${movie.title}">
                             </div>
@@ -154,14 +153,31 @@ app.init = function() {
                         </div>
                     `;
                     $('.movie-results').append(movieHtml);
-                }
-                
+                } // end of for loop
+                    
                 // printing recipes to page
                 $('.recipe-results').empty();
                 for (let i = 0; i < 4; i++) {
                     const recipe = recipeChoices[0].recipes[i];
                     console.log(recipe); // REMOVE
                     console.log(recipe.dishTypes); // REMOVE~!!!!!
+
+                    // getting recipe time / check if it's over 60 min
+                    if (recipe.readyInMinutes < 60) {
+                        const readyTime = `${recipe.readyInMinutes} minutes`;
+                        console.log(readyTime);  // REMOVE    
+                    } else {
+                        const hours = Math.round(recipe.readyInMinutes / 60);
+                        if (recipe.readyInMinutes % 60 === 0) {
+                            const readyTime = `${hours} hours`;
+                            console.log(readyTime); // REMOVE 
+                        } else {
+                            const minutes = Math.round(recipe.readyInMinutes % 60);
+                            const readyTime = `${hours}h ${minutes}min`;
+                            console.log(readyTime); // REMOVE 
+                        }
+                    }
+                
                     
                     // Getting dish types for each recipe, if available.
                     const dishTypeList = recipe.dishTypes;
@@ -179,59 +195,59 @@ app.init = function() {
                             } 
                         }
                     }
-                    
-                // Getting wine pairings for each recipe, if available.
-                const winePairingList = recipe.winePairing.pairedWines;
-                let wineHtml = `<p>Wine Pairing(s): `;
-                if (winePairingList === undefined) {
-                    wineHtml = '';
-                } else {
-                    for (let i = 0; i < winePairingList.length; i++ ) {
-                        if (i === (winePairingList.length - 1)) {
-                            wineHtml += `${winePairingList[i]}</p>`;
-                            console.log(wineHtml); // REMOVE
-                        } else {
-                            wineHtml += `${winePairingList[i]}, `;
-                            console.log(wineHtml); // REMOVE
-                        } 
+                        
+                    // Getting wine pairings for each recipe, if available.
+                    const winePairingList = recipe.winePairing.pairedWines;
+                    let wineHtml = `<p>Wine Pairing(s): `;
+                    if (winePairingList === undefined) {
+                        wineHtml = '';
+                    } else {
+                        for (let i = 0; i < winePairingList.length; i++ ) {
+                            if (i === (winePairingList.length - 1)) {
+                                wineHtml += `${winePairingList[i]}</p>`;
+                                console.log(wineHtml); // REMOVE
+                            } else {
+                                wineHtml += `${winePairingList[i]}, `;
+                                console.log(wineHtml); // REMOVE
+                            } 
+                        }
                     }
-                }
                 
-                const recipeHtml = `
-                    <div class="recipe-card flex-container">
-                        <div class="recipe-img">
-                            <img src="${recipe.image}" alt="${recipe.title}">
+                    const recipeHtml = `
+                        <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="500">
+                            <div class="recipe-img">
+                                <img src="${recipe.image}" alt="${recipe.title}">
+                            </div>
+                            <div class="card-text">
+                                <p class="card-title">${recipe.title}</p>
+                                <p>Ready in ${readyTime}</p>
+                                <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
+                                ${dishTypeHtml}
+                                ${wineHtml}
+                                <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
+                            </div>
                         </div>
-                        <div class="card-text">
-                            <p class="card-title">${recipe.title}</p>
-                            <p>Ready in ${recipe.readyInMinutes} minutes</p>
-                            <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
-                            ${dishTypeHtml}
-                            ${wineHtml}
-                            <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
-                        </div>
-                    </div>
-                `;
-                $('.recipe-results').append(recipeHtml);
-            }
+                    `;
+                    $('.recipe-results').append(recipeHtml);
+                } // end of for loop
+            })
+            .fail(function(error) {
+                alert('Sorry, no results found! Please try another search.');
+            });
+        }  // end of if-else @___@;;
+    }) // end of form submit event handler
+
+
+    // changing the heart icon to utensils on hover when searching recipes
+    $('.food-search-container').hover(
+        function(){
+            $('.icon').removeClass('fa-heart');
+            $('.icon').addClass('fa-utensils');
+        },
+        function(){
+            $('.icon').removeClass('fa-utensils');
+            $('.icon').addClass('fa-heart');
         })
-        .fail(function(error) {
-            alert('Sorry, no results found! Please try another search.');
-        });
-    }  // end of if-else @___@;;
-})
-
-
-// changing the heart icon to utensils on hover when searching recipes
-$('.food-search-container').hover(
-    function(){
-        $('.icon').removeClass('fa-heart');
-        $('.icon').addClass('fa-utensils');
-    },
-    function(){
-        $('.icon').removeClass('fa-utensils');
-        $('.icon').addClass('fa-heart');
-    })
     
     // changing the heart icon to film on hover when searching movies
     $('.genre-search-container').hover(
@@ -257,7 +273,7 @@ $('.food-search-container').hover(
     //         $('.icon').addClass('fa-film');
     //     })
 
-}
+} // end of app.init()
 
 
 $(function () {
