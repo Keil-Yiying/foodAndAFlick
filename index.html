@@ -8,6 +8,7 @@
     <title>impressYourDate</title>
     <link href="https://fonts.googleapis.com/css?family=Merriweather:700|Muli&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
@@ -54,7 +55,9 @@
                     </select>
                 </div>
 
-                <button type="submit">Submit</button>
+                <div class="button-container">
+                    <a href="#results"><button type="submit">Submit</button></a>
+                </div>
             </form>
 
         </section>
@@ -65,7 +68,7 @@
                 <h3 class="display-none">Recipes</h3>
                 <div class="recipe-results flex-container">
                     
-                    <div class="recipe-card flex-container">
+                    <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="recipe-img">
                             <img src="https://spoonacular.com/recipeImages/211413-556x370.jpg">
                         </div>
@@ -79,7 +82,7 @@
                         </div>
                     </div>
                     
-                    <div class="recipe-card flex-container">
+                    <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="recipe-img"><img src="https://spoonacular.com/recipeImages/211413-556x370.jpg"></div>
                         <div class="card-text">
                             <p class="card-title">Tricolore pizza with basil oil</p>
@@ -91,7 +94,7 @@
                         </div>
                     </div>
                     
-                    <div class="recipe-card flex-container">
+                    <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="recipe-img">
                             <img src="https://spoonacular.com/recipeImages/211413-556x370.jpg">
                         </div>
@@ -105,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div class="recipe-card flex-container">    
+                    <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="800">    
                         <div class="recipe-img">
                             <img src="https://spoonacular.com/recipeImages/211413-556x370.jpg">
                         </div>
@@ -125,7 +128,7 @@
                 <h3 class="display-none">Movies</h3>
                 <div class="movie-results flex-container">
         
-                    <div class="movie-card flex-container">
+                    <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="movie-img">
                             <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
                         </div>
@@ -135,7 +138,7 @@
                         </div>
                     </div>
                     
-                    <div class="movie-card flex-container">
+                    <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="movie-img">
                             <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
                         </div>
@@ -145,7 +148,7 @@
                         </div>
                     </div>
         
-                    <div class="movie-card flex-container">
+                    <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="800">
                         <div class="movie-img">
                             <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
                         </div>
@@ -155,7 +158,7 @@
                         </div>
                     </div>
                     
-                    <div class="movie-card flex-container">    
+                    <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="800">    
                         <div class="movie-img">
                             <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
                         </div>
@@ -168,7 +171,9 @@
                 </div>  <!-- /.movie-results -->
             </div> <!-- /.results-container -->
 
-            <a href="#"><button class="search-again display-none">Search Again?</button></a>
+            <div class="button-container">
+                <a href="#"><button class="display-none">Search Again?</button></a>
+            </div>
         </section> <!-- /section .results -->
     </main>
     
@@ -178,6 +183,7 @@
     </div>
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 

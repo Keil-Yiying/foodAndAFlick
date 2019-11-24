@@ -60,7 +60,7 @@ app.getRecipes = function(query) {
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// SET DEFAULT FOR DROPDOWN??? RESETIING WITH .val('') just empties it
+// BREAK DOWN EVENT HANDLER - TOO BIG
 
 // SMALLEST MEDIA QUERY - MAYBE NEEDS LINKS TO SKIP TO MOVIES? THEN SKIP BACK TO FOODS? I DUNNO @____@;
 
@@ -89,6 +89,16 @@ app.getRecipes = function(query) {
 
 
 
+// function for getting the current date so the movie API won't return unreleased movies
+app.setMovieReleaseDate = function() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const day = today.getDate() + 1;
+    app.movieReleaseDate = `${year}-${month}-${day}`;
+}
+
+
 app.init = function() {    
     
     /*
@@ -96,46 +106,42 @@ app.init = function() {
     */
     $('form').on('submit', function (e) {
         e.preventDefault();
+
         app.usersFoodChoice = $('#food-search').val();
         app.usersGenreChoice = parseInt($('#genre-search').val());
         
-        /* 
+        if (app.usersFoodChoice === '') {
+            alert('Please make sure you entered a recipe to search and a movie genre!');
+        } else {
+
+            /* 
             using Math.random() to add some randomization to the movie results that show up, otherwise they will always return the top 4 of that genre listed on the API 
-        */
-        const moviePage = Math.ceil(Math.random() * 100);
-
-
-        /*
-            Getting the current date so the API won't return unreleased movies
-        */
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = today.getMonth() + 1;
-        const day = today.getDate() + 1;
-        const releaseDate = `${year}-${month}-${day}`;
-
-        $('#food-search').val(''); // clearing inputs after submit
-        $('#genre-search').val(28);
-
-        // using Promises to wait for both movie & recipe API calls
-        $.when(app.getMovies(app.usersGenreChoice, moviePage, releaseDate), app.getRecipes(app.usersFoodChoice))
+            */
+            const moviePage = Math.ceil(Math.random() * 100);
+            app.setMovieReleaseDate();
+        
+            $('#food-search').val(''); // reset inputs after submit
+            $('#genre-search').val(28);
+        
+            // using Promises to wait for both movie & recipe API calls
+            $.when(app.getMovies(app.usersGenreChoice, moviePage, app.movieReleaseDate), app.getRecipes(app.usersFoodChoice))
             .then(function(movieChoices, recipeChoices) {
                 console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
                 
                 $('h3').removeClass('display-none');
                 $('.search-again').removeClass('display-none');
-
+                
                 // printing movies to page
                 $('.movie-results').empty();
                 for (let i = 0; i < 4; i++) {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);
                     console.log(movieYear); // REMOVE!!!!
-
+                    
                     // making the movie blurbs a bit shorter so they don't stretch the page
                     const movieBlurb = movie.overview.slice(0, 231);
                     console.log(movieBlurb); // REMOVE DIS <<<<
-
+                    
                     const movieHtml = `
                         <div class="movie-card flex-container">
                             <div class="movie-img">
@@ -173,59 +179,60 @@ app.init = function() {
                             } 
                         }
                     }
-
-                    // Getting wine pairings for each recipe, if available.
-                    const winePairingList = recipe.winePairing.pairedWines;
-                    let wineHtml = `<p>Wine Pairing(s): `;
-                    if (winePairingList === undefined) {
-                        wineHtml = '';
-                    } else {
-                        for (let i = 0; i < winePairingList.length; i++ ) {
-                            if (i === (winePairingList.length - 1)) {
-                                wineHtml += `${winePairingList[i]}</p>`;
-                                console.log(wineHtml); // REMOVE
-                            } else {
-                                wineHtml += `${winePairingList[i]}, `;
-                                console.log(wineHtml); // REMOVE
-                            } 
-                        }
+                    
+                // Getting wine pairings for each recipe, if available.
+                const winePairingList = recipe.winePairing.pairedWines;
+                let wineHtml = `<p>Wine Pairing(s): `;
+                if (winePairingList === undefined) {
+                    wineHtml = '';
+                } else {
+                    for (let i = 0; i < winePairingList.length; i++ ) {
+                        if (i === (winePairingList.length - 1)) {
+                            wineHtml += `${winePairingList[i]}</p>`;
+                            console.log(wineHtml); // REMOVE
+                        } else {
+                            wineHtml += `${winePairingList[i]}, `;
+                            console.log(wineHtml); // REMOVE
+                        } 
                     }
-
-                    const recipeHtml = `
-                        <div class="recipe-card flex-container">
-                            <div class="recipe-img">
-                                <img src="${recipe.image}" alt="${recipe.title}">
-                            </div>
-                            <div class="card-text">
-                                <p class="card-title">${recipe.title}</p>
-                                <p>Ready in ${recipe.readyInMinutes} minutes</p>
-                                <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
-                                ${dishTypeHtml}
-                                ${wineHtml}
-                                <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
-                            </div>
-                        </div>
-                    `;
-                    $('.recipe-results').append(recipeHtml);
                 }
-            })
-            .fail(function(error) {
-                alert('Sorry, no results found! Please try another search.');
-            });
-    })
-
-
-    // changing the heart icon to utensils on hover when searching recipes
-    $('.food-search-container').hover(
-        function(){
-            $('.icon').removeClass('fa-heart');
-            $('.icon').addClass('fa-utensils');
-        },
-        function(){
-            $('.icon').removeClass('fa-utensils');
-            $('.icon').addClass('fa-heart');
+                
+                const recipeHtml = `
+                    <div class="recipe-card flex-container">
+                        <div class="recipe-img">
+                            <img src="${recipe.image}" alt="${recipe.title}">
+                        </div>
+                        <div class="card-text">
+                            <p class="card-title">${recipe.title}</p>
+                            <p>Ready in ${recipe.readyInMinutes} minutes</p>
+                            <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
+                            ${dishTypeHtml}
+                            ${wineHtml}
+                            <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
+                        </div>
+                    </div>
+                `;
+                $('.recipe-results').append(recipeHtml);
+            }
         })
+        .fail(function(error) {
+            alert('Sorry, no results found! Please try another search.');
+        });
+    }  // end of if-else @___@;;
+})
 
+
+// changing the heart icon to utensils on hover when searching recipes
+$('.food-search-container').hover(
+    function(){
+        $('.icon').removeClass('fa-heart');
+        $('.icon').addClass('fa-utensils');
+    },
+    function(){
+        $('.icon').removeClass('fa-utensils');
+        $('.icon').addClass('fa-heart');
+    })
+    
     // changing the heart icon to film on hover when searching movies
     $('.genre-search-container').hover(
         function () {
@@ -236,24 +243,25 @@ app.init = function() {
             $('.icon').removeClass('fa-film');
             $('.icon').addClass('fa-heart');
         })
-
+        
         //// VVVVVV DOESN'T WORKKKKKKKKK <<<<<<<<<<<<<<<<<<<<<<<<
-    // changing the heart icon on focus / making it work with tabbing
-    $('.food-search-container').focus(function(){
-            $('.icon').removeClass('fa-heart');
-            $('.icon').addClass('fa-utensils');
-        })
-
-    // changing the heart icon to film on hover when searching movies
-    $('.genre-search-container').focus(function () {
-            $('.icon').removeClass('fa-heart');
-            $('.icon').addClass('fa-film');
-        })
+        // changing the heart icon on focus / making it work with tabbing
+        // $('.food-search-container').focus(function(){
+            //         $('.icon').removeClass('fa-heart');
+            //         $('.icon').addClass('fa-utensils');
+            //     })
+            
+            // // changing the heart icon to film on hover when searching movies
+            // $('.genre-search-container').focus(function () {
+    //         $('.icon').removeClass('fa-heart');
+    //         $('.icon').addClass('fa-film');
+    //     })
 
 }
 
 
 $(function () {
+    AOS.init(); // animate on scroll
     app.init();
 });
 
