@@ -263,12 +263,6 @@ h1 {
   padding-top: 70px;
 }
 
-@media (max-width: 940px) {
-  h1 {
-    padding-top: 100px;
-  }
-}
-
 @media (max-width: 700px) {
   h1 {
     padding-top: 40px;
@@ -331,14 +325,27 @@ button:hover, button:focus {
   background-position: center;
   max-width: 1600px;
   margin: 0 auto;
+  height: 100vh;
 }
 
 header {
   height: 50vh;
 }
 
+@media (max-width: 940px) {
+  header {
+    height: 40%;
+  }
+}
+
 .form-inputs {
   height: 40vh;
+}
+
+@media (max-width: 940px) {
+  .form-inputs {
+    height: 50vh;
+  }
 }
 
 .submit-button {
@@ -421,6 +428,7 @@ form {
   .fa-stack {
     margin: 50px auto;
     padding: 30px;
+    top: 0;
   }
 }
 

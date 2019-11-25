@@ -29,10 +29,6 @@ h1 {
     margin: 0;
     padding-top: 70px;
 
-    @media (max-width: 940px) {
-        padding-top: 100px;
-    }
-
     @media (max-width: 700px) {
         padding-top: 40px;
         font-size: 3.5rem;
@@ -91,6 +87,7 @@ button {
     background-position: center;
     max-width: 1600px; // constrained for bigger screens
     margin: 0 auto;
+    height: 100vh;
 }
 
 
@@ -98,17 +95,17 @@ button {
 header {
     height: 50vh;
 
-    // @media (max-width: 940px) {
-    //     height: 40%;
-    // }
+    @media (max-width: 940px) {
+        height: 40%;
+    }
 }
 
 .form-inputs {
     height: 40vh;
 
-    // @media (max-width: 940px) {
-    //     height: 50%;
-    // }
+    @media (max-width: 940px) {
+        height: 50vh;
+    }
 }
 
 .submit-button {
