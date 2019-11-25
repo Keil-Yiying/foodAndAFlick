@@ -18,8 +18,6 @@ app.recipeKey = `37d5d0c2cce74758b4307f9f5c729c0d`;
 app.recipeUrl = `https://api.spoonacular.com/recipes/random`; 
 
 
-
-
 /*
     AJAX CALLS
 */
@@ -68,19 +66,16 @@ app.getRecipes = function(query) {
 // SUBMIT BUTTON - maybe use position: absolute to keep it at bottom of screen
     // also needs arrow under for when results load? @________@ - js to show with display-none
 
-// is there a way to use tab/focus to change the icon in the middle?
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 // NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!! - OR, if one doesn't return anything
     // so far I used an alert but it also alerts if one result goes wrong while other results load in ok >___<;;;
+
+// MASSIVE EVENT HANDLER
 
 // weird error-handling thing:
     // no dish type = empty array, using == false works to catch it
     // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
         // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
-
-// DEAL WITH FOOTER
 
 
 
@@ -94,8 +89,14 @@ app.setMovieReleaseDate = function() {
     app.movieReleaseDate = `${year}-${month}-${day}`;
 }
 
-
-app.init = function() {    
+app.init = function() {   
+    
+    /*
+        METHODS THAT NEED TO RUN
+    */
+    $('h3').hide();
+    $('.search-again').hide();
+    $('footer').hide();
     
     /*
         EVENT HANDLERS
@@ -124,19 +125,21 @@ app.init = function() {
             .then(function(movieChoices, recipeChoices) {
                 console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
                 
-                $('h3').removeClass('display-none');
-                $('.search-again').removeClass('display-none');
+                $('h3').show();
+                $('.search-again').show();
+                $('footer').show();
                 
                 // printing movies to page
                 $('.movie-results').empty();
                 for (let i = 0; i < 4; i++) {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);
-                    console.log(movieYear); // REMOVE!!!!
                     
                     // making the movie blurbs a bit shorter so they don't stretch the page
-                    const movieBlurb = movie.overview.slice(0, 231);
-                    console.log(movieBlurb); // REMOVE DIS <<<<
+                    const movieBlurb = movie.overview.slice(0, 241);
+
+                    // a function for this would probably be like
+                    // printMoviesToPage(title, year, imgUrl, blurb, url, id)
                     
                     const movieHtml = `
                         <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
@@ -159,22 +162,29 @@ app.init = function() {
                     console.log(recipe); // REMOVE
                     console.log(recipe.dishTypes); // REMOVE~!!!!!
 
+                    // CAN THIS BE A FUNCTION????
+                    // getRecipeTime(minutes) 
+
+
                     // getting recipe time / check if it's over 60 min
+                    let readyTime = '';
                     if (recipe.readyInMinutes < 60) {
-                        const readyTime = `${recipe.readyInMinutes} minutes`;
+                        readyTime = `${recipe.readyInMinutes} minutes`;
                         console.log(readyTime);  // REMOVE    
                     } else {
                         const hours = Math.round(recipe.readyInMinutes / 60);
                         if (recipe.readyInMinutes % 60 === 0) {
-                            const readyTime = `${hours} hours`;
+                            readyTime = `${hours} hours`;
                             console.log(readyTime); // REMOVE 
                         } else {
                             const minutes = Math.round(recipe.readyInMinutes % 60);
-                            const readyTime = `${hours}h ${minutes}min`;
+                            readyTime = `${hours}h ${minutes}min`;
                             console.log(readyTime); // REMOVE 
                         }
                     }
-                
+                    
+                    /// CAN THIS BE A FUNCTION???
+                    // getDishType(dish)
                     
                     // Getting dish types for each recipe, if available.
                     const dishTypeList = recipe.dishTypes;
@@ -192,6 +202,9 @@ app.init = function() {
                             } 
                         }
                     }
+
+                    // CAN THIS BE A FUNCTION???
+                    // getWinePairings(wineList);
                         
                     // Getting wine pairings for each recipe, if available.
                     const winePairingList = recipe.winePairing.pairedWines;
@@ -210,6 +223,11 @@ app.init = function() {
                         }
                     }
                 
+
+                    // MAKE THIS A FUNCTION LIKE:
+                    // printRecipesToPage(title, imgUrl, readyTime, steps, ingredients, dishType, wineType, url)
+
+
                     const recipeHtml = `
                         <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="500">
                             <div class="recipe-img">
@@ -226,6 +244,7 @@ app.init = function() {
                         </div>
                     `;
                     $('.recipe-results').append(recipeHtml);
+
                 } // end of for loop
             })
             .fail(function(error) {
@@ -233,7 +252,6 @@ app.init = function() {
             });
         }  // end of if-else @___@;;
     }) // end of form submit event handler
-
 
     // changing the heart icon to utensils on hover when searching recipes
     $('.food-search-container').hover(
@@ -256,19 +274,6 @@ app.init = function() {
             $('.icon').removeClass('fa-film');
             $('.icon').addClass('fa-heart');
         })
-        
-        //// VVVVVV DOESN'T WORKKKKKKKKK <<<<<<<<<<<<<<<<<<<<<<<<
-        // changing the heart icon on focus / making it work with tabbing
-        // $('.food-search-container').focus(function(){
-            //         $('.icon').removeClass('fa-heart');
-            //         $('.icon').addClass('fa-utensils');
-            //     })
-            
-            // // changing the heart icon to film on hover when searching movies
-            // $('.genre-search-container').focus(function () {
-    //         $('.icon').removeClass('fa-heart');
-    //         $('.icon').addClass('fa-film');
-    //     })
 
 } // end of app.init()
 

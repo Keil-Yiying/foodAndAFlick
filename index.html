@@ -38,7 +38,6 @@
                 <div class="genre-search-container">
                     <label for="genre-search">Choose a movie genre!</label>
                     <select id="genre-search" name="genre-search">
-                        <option value="" disabled>What does your date like to watch?</option>
                         <option value="28">Action</option>
                         <option value="12">Adventure</option>
                         <option value="16">Animation</option>
@@ -57,7 +56,7 @@
                 </div>
 
                 <div class="button-container">
-                    <a href="#results"><button type="submit">Submit</button></a>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         </section> <!-- / #form -->
@@ -69,9 +68,11 @@
             <section id="results" class="flex-container">
                 
                 <section id="recipes" class="results-container flex-container">
-                    <h3 class="display-none">Recipes</h3>
+                    <h3>Recipes</h3>
                     <div class="recipe-results flex-container">
                         
+                        <div class="display-none">
+                            
                         <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="500">
                             <div class="recipe-img">
                                 <img src="https://spoonacular.com/recipeImages/211413-556x370.jpg">
@@ -91,8 +92,7 @@
                             <div class="card-text">
                                 <p class="card-title">Tricolore pizza with basil oil</p>
                                 <p>Ready in 27 minutes</p>
-                                <p>Prep minutes 15</p>
-                                <p>Cooking minutes 12</p>
+                                <p>12 steps, 12 ingredients</p>
                                 <p>Wine Pairings: sangiovese, barbera wine, shiraz</p>
                                 <p><a href="https://www.bbcgoodfood.com/recipes/6636/tricolore-pizza-with-basil-oil">Go to recipe</a></p>
                             </div>
@@ -105,8 +105,7 @@
                             <div class="card-text">
                                 <p class="card-title">Tricolore pizza with basil oil</p>
                                 <p>Ready in 27 minutes</p>
-                                <p>Prep minutes 15</p>
-                                <p>Cooking minutes 12</p>
+                                <p>12 steps, 12 ingredients</p>
                                 <p>Wine Pairings: sangiovese, barbera wine, shiraz</p>
                                 <p><a href="https://www.bbcgoodfood.com/recipes/6636/tricolore-pizza-with-basil-oil">Go to recipe</a></p>
                             </div>
@@ -119,20 +118,24 @@
                             <div class="card-text">
                                 <p class="card-title">Tricolore pizza with basil oil</p>
                                 <p>Ready in 27 minutes</p>
-                                <p>Prep minutes 15</p>
-                                <p>Cooking minutes 12</p>
+                                <p>12 steps, 12 ingredients</p>
                                 <p>Wine Pairings: sangiovese, barbera wine, shiraz</p>
                                 <p><a href="https://www.bbcgoodfood.com/recipes/6636/tricolore-pizza-with-basil-oil">Go to recipe</a></p>
                             </div>
+                        </div>
+
+                        
                         </div>
 
                     </div> <!-- /.recipe-results -->
                 </section> <!-- / #recipes -->
                 
                 <section id="movies" class="results-container flex-container">
-                    <h3 class="display-none">Movies</h3>
+                    <h3>Movies</h3>
                     <div class="movie-results flex-container">
 
+                        <div class="display-none">
+                            
                         <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
                             <div class="movie-img">
                                 <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
@@ -172,17 +175,19 @@
                                 <p>An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on something something... <a href="https://www.themoviedb.org/movie/5393">Read more</a> (~240)</p>  
                             </div>
                         </div>
+                        
+                        </div>
             
                     </div>  <!-- /.movie-results -->
                 </section> <!-- / #movies -->
 
-                <div class="button-container display-none">
+                <div class="button-container search-again">
                     <a href="#"><button>Search Again?</button></a>
                 </div>
             </section> <!-- / #results -->
         </main>
         
-        <footer class="display-none">
+        <footer>
             <p>Made by Keil Martin & <a href="https://www.yiying.ca">Yiying Zou</a></p>
             <p>Data from <a href="https://www.themoviedb.org/">The Movie Database</a> & <a href="https://spoonacular.com/">Spoonacular</a> | Background image from <a href="https://www.pexels.com/">Pexels</a></p>
         </footer>
