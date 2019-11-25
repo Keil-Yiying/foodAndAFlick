@@ -1,3 +1,12 @@
+.form-section {
+    position: relative;
+
+    .button-container {
+        position: absolute;
+        bottom: 60px;
+    }
+}
+
 form {
     align-items: center;
 
@@ -16,7 +25,8 @@ form {
 .fa-utensils,
 .fa-film {
     font-size: 3rem;
-    color: #6c0b11;;
+    color: #6c0b11;
+    filter: drop-shadow(0 0 5px #da3052);
 }
 
 // icon container
@@ -24,7 +34,8 @@ form {
     width: 180px;
     justify-content: center;
     align-items: center;
-    // padding: 0 10px;
+    position: relative;
+    top: 10px;
 
     @media (max-width: 825px) {
         // width: 135px;
@@ -46,6 +57,7 @@ form {
 label {
     display: block;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .food-search-container {
@@ -69,19 +81,28 @@ select {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    border: 0;
     border-radius: 25px;
     padding: 15px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    color: #6c0b11;
     width: 100%;
 }
 
+input:hover,
+input:focus {
+    background: #fff;
+}
+
 select {
-    background-color: #fff;
     background-image: url('../assets/arrow-down.png');
     background-repeat: no-repeat;
     background-position: 96% center;
-}
 
-button[type="submit"] {
-    margin: 120px auto 70px auto;
+    &:hover,
+    &:focus {
+        background-image: url('../assets/arrow-down.png'), linear-gradient(to right, #fff, #fff);
+        background-repeat: no-repeat, repeat;
+        background-position: 96% center, top left;
+    }
 }

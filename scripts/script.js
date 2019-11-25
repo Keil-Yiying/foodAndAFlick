@@ -85,6 +85,7 @@ app.getRecipes = function(query) {
 
 
 // DEAL WITH FOOTER
+// OUTER WRAPPER FOR 1600+ px screens?
 
 
 

@@ -247,10 +247,10 @@ html {
 }
 
 body {
-  color: black;
   background: #6c0b11;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1rem;
+  line-height: 1.4;
   color: #fff;
 }
 
@@ -260,6 +260,8 @@ h1 {
   font-size: 3rem;
   line-height: 1.2;
   width: 100%;
+  margin-top: 0;
+  padding-top: 40px;
 }
 
 h2 {
@@ -275,11 +277,30 @@ button {
   padding: 15px 80px;
   border-radius: 25px;
   margin: 0 auto;
+  border: 3px solid #da3052;
+  background: #da3052;
+  color: #fff;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+button:hover, button:focus {
+  background: #fff;
+  color: #da3052;
 }
 
 .button-container {
   width: 100%;
   text-align: center;
+}
+
+.landing {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(108, 11, 17, 0.7)), to(rgba(108, 11, 17, 0.7))), url("../assets/bg-image.jpg");
+  background-image: linear-gradient(to bottom, rgba(108, 11, 17, 0.7), rgba(108, 11, 17, 0.7)), url("../assets/bg-image.jpg");
+  background-size: cover;
+  background-position: center;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 header,
@@ -301,6 +322,15 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.form-section {
+  position: relative;
+}
+
+.form-section .button-container {
+  position: absolute;
+  bottom: 60px;
 }
 
 form {
@@ -330,6 +360,8 @@ form {
 .fa-film {
   font-size: 3rem;
   color: #6c0b11;
+  -webkit-filter: drop-shadow(0 0 5px #da3052);
+          filter: drop-shadow(0 0 5px #da3052);
 }
 
 .fa-stack {
@@ -340,6 +372,8 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  top: 10px;
 }
 
 @media (max-width: 825px) {
@@ -364,6 +398,7 @@ form {
 label {
   display: block;
   margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 .food-search-container {
@@ -391,25 +426,30 @@ select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  border: 0;
   border-radius: 25px;
   padding: 15px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  color: #6c0b11;
   width: 100%;
 }
 
+input:hover,
+input:focus {
+  background: #fff;
+}
+
 select {
-  background-color: #fff;
   background-image: url("../assets/arrow-down.png");
   background-repeat: no-repeat;
   background-position: 96% center;
 }
 
-button[type="submit"] {
-  margin: 120px auto 70px auto;
-}
-
-* {
-  border: 1px solid deepskyblue;
+select:hover, select:focus {
+  background-image: url("../assets/arrow-down.png"), -webkit-gradient(linear, left top, right top, from(#fff), to(#fff));
+  background-image: url("../assets/arrow-down.png"), linear-gradient(to right, #fff, #fff);
+  background-repeat: no-repeat, repeat;
+  background-position: 96% center, top left;
 }
 
 .results-container {
@@ -434,12 +474,10 @@ button[type="submit"] {
 .movie-card,
 .recipe-card {
   width: 100%;
-  height: 360px;
   padding: 20px;
-  background: #FFE0BE;
+  background: #fdf3f5;
   border-radius: 25px;
   margin-bottom: 30px;
-  color: #502f2c;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -470,6 +508,7 @@ button[type="submit"] {
 .recipe-img img {
   width: 100%;
   border-radius: 15px;
+  display: block;
 }
 
 @media (max-width: 1200px) {
@@ -504,6 +543,7 @@ button[type="submit"] {
 .card-text {
   width: 70%;
   padding-left: 20px;
+  color: #502f2c;
 }
 
 @media (max-width: 1200px) {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>impressYourDate</title>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:700|Muli&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
@@ -14,18 +14,19 @@
 
 
 <body>
-<div class="wrapper">
-    <header>
-        <h1>Food & A Flick</h1>
-        <h2>Plan a romantic night in for you & your date!</h2>
-    </header>
 
-    <main>
-        <section id="#form" class="form-section">
+    <section id="landing" class="landing">
+            <div class="wrapper">
+        <header>
+            <h1>Food & A Flick</h1>
+            <h2>Plan a romantic night in for you & your date!</h2>
+        </header>
+
+        <section id="form" class="form-section">
             <form class="flex-container">
                 <div class="food-search-container">
                     <label for="food-search">Find some yummy recipes!</label>
-                    <input type="text" id="food-search" name="food-search" placeholder="Try 'pizza' or 'vegetarian'">
+                    <input type="text" id="food-search" name="food-search" placeholder="Try 'chicken' or 'vegetarian'">
                 </div>
                 
                 <!-- using Font Awesome's stacking code -->
@@ -59,12 +60,15 @@
                     <a href="#results"><button type="submit">Submit</button></a>
                 </div>
             </form>
+        </section> <!-- / #form -->
+        </div>
+    </section> <!-- / #landing -->
 
-        </section>
-
+    <div class="wrapper">
+    <main>
         <section id="results" class="flex-container">
             
-            <div class="results-container flex-container">
+            <section id="recipes" class="results-container flex-container">
                 <h3 class="display-none">Recipes</h3>
                 <div class="recipe-results flex-container">
                     
@@ -73,11 +77,11 @@
                             <img src="https://spoonacular.com/recipeImages/211413-556x370.jpg">
                         </div>
                         <div class="card-text">
-                            <p class="card-title">Tricolore pizza with basil oil</p>
+                            <p class="card-title">Tricolore pizza with basil oil with lots of other stuff</p>
                             <p>Ready in 27 minutes</p>
                             <p>12 steps, 12 ingredients</p>
                             <p>Dish type(s): dessert, salad, lunch, dinner, breakfast, tea, hors d'oeuvres</p>
-                            <p>Wine Pairing(s): sangiovese, barbera wine, shiraz</p>
+                            <p>Wine Pairing(s): sangiovese, barbera wine, shiraz, and allllll the other wines!</p>
                             <p><a href="https://www.bbcgoodfood.com/recipes/6636/tricolore-pizza-with-basil-oil">Go to recipe</a></p>
                         </div>
                     </div>
@@ -121,13 +125,14 @@
                             <p><a href="https://www.bbcgoodfood.com/recipes/6636/tricolore-pizza-with-basil-oil">Go to recipe</a></p>
                         </div>
                     </div>
+
                 </div> <!-- /.recipe-results -->
-            </div> <!-- /.results-container -->
+            </section> <!-- / #recipes -->
             
-            <div class="results-container flex-container">
+            <section id="movies" class="results-container flex-container">
                 <h3 class="display-none">Movies</h3>
                 <div class="movie-results flex-container">
-        
+
                     <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
                         <div class="movie-img">
                             <img src="https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg">
@@ -169,19 +174,20 @@
                     </div>
         
                 </div>  <!-- /.movie-results -->
-            </div> <!-- /.results-container -->
+            </section> <!-- / #movies -->
 
-            <div class="button-container">
-                <a href="#"><button class="display-none">Search Again?</button></a>
+            <div class="button-container display-none">
+                <a href="#"><button>Search Again?</button></a>
             </div>
-        </section> <!-- /section .results -->
+        </section> <!-- / #results -->
     </main>
     
-    <footer>
+    <footer class="display-none">
         <p>Made by Keil Martin & Yiying Zou | Data from <a href="https://www.themoviedb.org/">The Movie Database</a> & <a href="https://spoonacular.com/">Spoonacular</a></p>
     </footer>
-    </div>
+    </div> <!-- /.wrapper -->
 
+    <!-- SCRIPTS -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="./scripts/script.js"></script>

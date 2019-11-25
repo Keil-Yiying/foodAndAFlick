@@ -1,5 +1,5 @@
 // * {
-//     border: 1px solid red;
+//     border: 1px solid deepskyblue;
 // }
 
 html {
@@ -14,10 +14,10 @@ html {
 }
 
 body {
-    color: black;
     background: #6c0b11;
-    font-family: 'Muli', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 1rem;
+    line-height: 1.4;
     color: #fff;
 }
 
@@ -27,6 +27,9 @@ h1 {
     font-size: 3rem;
     line-height: 1.2;
     width: 100%;
+
+    margin-top: 0;
+    padding-top: 40px;
 }
 
 h2 {
@@ -42,13 +45,31 @@ button {
     padding: 15px 80px;
     border-radius: 25px;
     margin: 0 auto;
-}
+    border: 3px solid #da3052;
+    background: #da3052; // #6c0b11
+    color: #fff;
+    transition: 0.3s all;
 
+    &:hover,
+    &:focus {
+        background: #fff;
+        color: #da3052;
+    }
+}
 
 .button-container {
     width: 100%;
     text-align: center;
 }
+
+.landing {
+    background-image: linear-gradient(to bottom, rgba(108, 11, 17, 0.7), rgba(108, 11, 17, 0.7)), url('../assets/bg-image.jpg');
+    background-size: cover;
+    background-position: center;
+    max-width: 1600px; // constrained for bigger screens
+    margin: 0 auto;
+}
+
 
 header,
 .form-section {
