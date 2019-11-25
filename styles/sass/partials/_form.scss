@@ -1,12 +1,3 @@
-// .form-section {
-//     position: relative;
-// 
-    // .button-container {
-    //     position: absolute;
-    //     bottom: 60px;
-    // }
-// }
-
 form {
     align-items: center;
 
@@ -17,7 +8,7 @@ form {
 }
 
 .fa-circle {
-    color: white;
+    color: #fff;
     font-size: 6rem;
 }
 
@@ -29,7 +20,7 @@ form {
     filter: drop-shadow(0 0 5px #da3052);
 }
 
-// icon container div
+// icon container div for the circle & icons in the middle
 .fa-stack {
     width: 180px;
     justify-content: center;
@@ -40,7 +31,7 @@ form {
     @media (max-width: 940px) {
         margin: 50px auto;
         padding: 30px;
-        top: 0;
+        top: 5px;
     }
 }
 

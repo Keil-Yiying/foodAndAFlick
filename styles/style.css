@@ -325,7 +325,7 @@ button:hover, button:focus {
   background-position: center;
   max-width: 1600px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 header {
@@ -334,22 +334,29 @@ header {
 
 @media (max-width: 940px) {
   header {
-    height: 40%;
+    height: 30%;
   }
 }
 
 .form-inputs {
-  height: 40vh;
+  height: 35vh;
 }
 
 @media (max-width: 940px) {
   .form-inputs {
-    height: 50vh;
+    height: 50%;
   }
 }
 
 .submit-button {
-  height: 10vh;
+  height: 15vh;
+}
+
+@media (max-width: 940px) {
+  .submit-button {
+    padding: 30px 0;
+    height: 10%;
+  }
 }
 
 header,
@@ -399,7 +406,7 @@ form {
 }
 
 .fa-circle {
-  color: white;
+  color: #fff;
   font-size: 6rem;
 }
 
@@ -428,7 +435,7 @@ form {
   .fa-stack {
     margin: 50px auto;
     padding: 30px;
-    top: 0;
+    top: 5px;
   }
 }
 

@@ -87,33 +87,32 @@ button {
     background-position: center;
     max-width: 1600px; // constrained for bigger screens
     margin: 0 auto;
-    height: 100vh;
+    min-height: 100vh;
 }
-
-
 
 header {
     height: 50vh;
 
     @media (max-width: 940px) {
-        height: 40%;
+        height: 30%;
     }
 }
 
 .form-inputs {
-    height: 40vh;
+    height: 35vh;
 
     @media (max-width: 940px) {
-        height: 50vh;
+        height: 50%;
     }
 }
 
 .submit-button {
-    height: 10vh;
+    height: 15vh;
 
-    // @media (max-width: 940px) {
-    //     height: 10%;
-    // }
+    @media (max-width: 940px) {
+        padding: 30px 0;
+        height: 10%;
+    }
 }
 
 header,
