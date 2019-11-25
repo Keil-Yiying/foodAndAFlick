@@ -89,6 +89,23 @@ app.setMovieReleaseDate = function() {
     app.movieReleaseDate = `${year}-${month}-${day}`;
 }
 
+// function to print movies to page
+app.printMoviesToPage = function(title, year, imgUrl, blurb, id) {
+    const movieHtml = `
+        <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
+            <div class="movie-img">
+                <img src="${app.movieImgUrl}${imgUrl}" alt="Movie poster for ${title}">
+            </div>
+            <div class="card-text">
+                <p class="card-title">${title} <span class="movie-year">(${year})</span></p>
+                <p>${blurb}... <a href="${app.movieInfoUrl}${id}">Read more</a></p>
+            </div>
+        </div>
+    `;
+    $('.movie-results').append(movieHtml);
+}
+
+
 app.init = function() {   
     
     /*
@@ -139,22 +156,9 @@ app.init = function() {
                     // making the movie blurbs a bit shorter so they don't stretch the page
                     const movieBlurb = movie.overview.slice(0, 241);
 
-                    // a function for this would probably be like
-                    // printMoviesToPage(title, year, imgUrl, blurb, url, id)
+                    app.printMoviesToPage(movie.title, movieYear, movie.poster_path,movieBlurb, movie.id);                    
                     
-                    const movieHtml = `
-                        <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
-                            <div class="movie-img">
-                                <img src="${app.movieImgUrl}${movie.poster_path}" alt="Movie poster for ${movie.title}">
-                            </div>
-                            <div class="card-text">
-                                <p class="card-title">${movie.title} <span class="movie-year">(${movieYear})</span></p>
-                                <p>${movieBlurb}... <a href="${app.movieInfoUrl}${movie.id}">Read more</a></p>
-                            </div>
-                        </div>
-                    `;
-                    $('.movie-results').append(movieHtml);
-                } // end of for loop
+                } // end of for loop - movies
                     
                 // printing recipes to page
                 $('.recipe-results').empty();
@@ -246,12 +250,12 @@ app.init = function() {
                     `;
                     $('.recipe-results').append(recipeHtml);
 
-                } // end of for loop
+                } // end of for loop - recipes
             })
             .fail(function(error) {
                 alert('Sorry, no results found! Please try another search.');
             });
-        }  // end of if-else @___@;;
+        }  // end of if-else for getting results
     }) // end of form submit event handler
 
     // changing the heart icon to utensils on hover when searching recipes
