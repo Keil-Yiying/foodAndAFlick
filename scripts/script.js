@@ -94,9 +94,9 @@ app.init = function() {
     /*
         METHODS THAT NEED TO RUN
     */
-    $('h3').hide();
-    $('.search-again').hide();
-    $('footer').hide();
+    // $('h3').hide();
+    // $('.search-again').hide();
+    // $('footer').hide();
     
     /*
         EVENT HANDLERS
@@ -131,7 +131,7 @@ app.init = function() {
                 
                 // printing movies to page
                 $('.movie-results').empty();
-                
+
                 for (let i = 0; i < 4; i++) {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);

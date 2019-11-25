@@ -247,15 +247,19 @@ html {
 }
 
 body {
-  background: #6c0b11;
+  background: #600910;
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
   line-height: 1.4;
   color: #fff;
 }
 
-h1 {
+h1,
+h3 {
   font-family: 'Great Vibes', cursive;
+}
+
+h1 {
   font-size: 5rem;
   line-height: 1.2;
   width: 100%;
@@ -281,6 +285,11 @@ h2 {
   }
 }
 
+h3 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
 p {
   font-size: 1rem;
 }
@@ -293,7 +302,7 @@ a {
 }
 
 a:hover, a:focus {
-  color: #da3052;
+  color: #000;
 }
 
 button {
@@ -301,16 +310,16 @@ button {
   padding: 15px 80px;
   border-radius: 25px;
   margin: 0 auto;
-  border: 3px solid #da3052;
-  background: #da3052;
+  border: 0;
+  background: #000;
   color: #fff;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
 
 button:hover, button:focus {
-  background: rgba(255, 255, 255, 0.9);
-  color: #da3052;
+  background: #fff;
+  color: #000;
 }
 
 .button-container {
@@ -319,8 +328,8 @@ button:hover, button:focus {
 }
 
 .landing {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(108, 11, 17, 0.7)), to(rgba(108, 11, 17, 0.7))), url("../assets/bg-image.jpg");
-  background-image: linear-gradient(to bottom, rgba(108, 11, 17, 0.7), rgba(108, 11, 17, 0.7)), url("../assets/bg-image.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(76, 5, 10, 0.7)), to(rgba(76, 5, 10, 0.7))), url("../assets/bg-image2.jpg");
+  background-image: linear-gradient(to bottom, rgba(76, 5, 10, 0.7), rgba(76, 5, 10, 0.7)), url("../assets/bg-image2.jpg");
   background-size: cover;
   background-position: center;
   max-width: 1600px;
@@ -492,7 +501,7 @@ select {
   border-radius: 25px;
   padding: 15px;
   background: rgba(255, 255, 255, 0.8);
-  color: #6c0b11;
+  color: #000;
   width: 100%;
 }
 
@@ -537,7 +546,6 @@ select:hover, select:focus {
 .recipe-card {
   width: 100%;
   padding: 20px;
-  background: #f8eaed;
   border-radius: 25px;
   margin-bottom: 40px;
   -webkit-box-align: center;
@@ -552,6 +560,31 @@ select:hover, select:focus {
     padding: 0;
     overflow: hidden;
   }
+}
+
+.movie-card a,
+.recipe-card a {
+  color: #da3052;
+}
+
+.movie-card {
+  background: #000;
+  color: #fff;
+}
+
+.movie-card a:hover,
+.movie-card a:focus {
+  color: #fff;
+}
+
+.recipe-card {
+  background: #fff;
+  color: #000;
+}
+
+.recipe-card a:hover,
+.recipe-card a:focus {
+  color: #000;
 }
 
 .movie-img,
@@ -605,7 +638,6 @@ select:hover, select:focus {
 .card-text {
   width: 70%;
   padding-left: 20px;
-  color: #45080d;
 }
 
 @media (max-width: 1200px) {

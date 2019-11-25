@@ -14,15 +14,19 @@ html {
 }
 
 body {
-    background: #6c0b11;
+    background: #600910; //#6c0b11;
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     line-height: 1.4;
     color: #fff;
 }
 
-h1 {
+h1,
+h3 {
     font-family: 'Great Vibes', cursive;
+}
+
+h1 {
     font-size: 5rem;
     line-height: 1.2;
     width: 100%;
@@ -44,6 +48,11 @@ h2 {
     }
 }
 
+h3 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
 p {
     font-size: 1rem;
 }
@@ -55,7 +64,7 @@ a {
 
     &:hover,
     &:focus {
-        color: #da3052;
+        color: #000;
     }
 }
 
@@ -64,15 +73,18 @@ button {
     padding: 15px 80px;
     border-radius: 25px;
     margin: 0 auto;
-    border: 3px solid #da3052;
-    background: #da3052; // #6c0b11
+    // border: 3px solid #da3052;
+    // background: #da3052; 
+    border: 0;
+    background: #000;
     color: #fff;
     transition: 0.3s all;
 
     &:hover,
     &:focus {
-        background: rgba(255, 255, 255, 0.9);
-        color: #da3052;
+        background: #fff;
+        // color: #da3052;
+        color: #000;
     }
 }
 
@@ -82,7 +94,7 @@ button {
 }
 
 .landing {
-    background-image: linear-gradient(to bottom, rgba(108, 11, 17, 0.7), rgba(108, 11, 17, 0.7)), url('../assets/bg-image.jpg');
+    background-image: linear-gradient(to bottom, rgba(76, 5, 10, 0.7), rgba(76, 5, 10, 0.7)), url('../assets/bg-image2.jpg');
     background-size: cover;
     background-position: center;
     max-width: 1600px; // constrained for bigger screens
