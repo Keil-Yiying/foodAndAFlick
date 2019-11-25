@@ -255,17 +255,24 @@ body {
 }
 
 h1 {
-  font-family: 'Merriweather', serif;
+  font-family: 'Great Vibes', cursive;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 5rem;
   line-height: 1.2;
   width: 100%;
-  margin-top: 0;
-  padding-top: 40px;
+  margin: 0;
+  padding-top: 70px;
+}
+
+@media (max-width: 940px) {
+  h1 {
+    padding-top: 100px;
+  }
 }
 
 h2 {
   font-size: 2.2rem;
+  margin-top: 20px;
 }
 
 p {
@@ -296,7 +303,7 @@ button {
 }
 
 button:hover, button:focus {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   color: #da3052;
 }
 
@@ -317,6 +324,18 @@ button:hover, button:focus {
 header,
 .form-section {
   height: 50vh;
+}
+
+@media (max-width: 940px) {
+  header {
+    height: 40vh;
+  }
+}
+
+@media (max-width: 940px) {
+  .form-section {
+    height: 60vh;
+  }
 }
 
 header,
@@ -359,7 +378,7 @@ form {
           align-items: center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 940px) {
   form {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -396,7 +415,7 @@ form {
   top: 10px;
 }
 
-@media (max-width: 825px) {
+@media (max-width: 940px) {
   .fa-stack {
     margin: 50px auto;
     padding: 30px;
@@ -408,7 +427,7 @@ form {
   width: calc(50% - 180px / 2);
 }
 
-@media (max-width: 825px) {
+@media (max-width: 940px) {
   .food-search-container,
   .genre-search-container {
     width: 100%;
@@ -418,14 +437,20 @@ form {
 label {
   display: block;
   margin-bottom: 10px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 940px) {
+  label {
+    font-size: 1.3rem;
+  }
 }
 
 .food-search-container {
   text-align: right;
 }
 
-@media (max-width: 825px) {
+@media (max-width: 940px) {
   .food-search-container {
     text-align: center;
   }
@@ -435,7 +460,7 @@ label {
   text-align: left;
 }
 
-@media (max-width: 825px) {
+@media (max-width: 940px) {
   .genre-search-container {
     text-align: center;
   }

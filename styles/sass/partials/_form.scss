@@ -10,7 +10,7 @@
 form {
     align-items: center;
 
-    @media (max-width: 767px) {
+    @media (max-width: 940px) {
         flex-direction: column;
         align-content: center;
     }
@@ -37,7 +37,7 @@ form {
     position: relative;
     top: 10px;
 
-    @media (max-width: 825px) {
+    @media (max-width: 940px) {
         margin: 50px auto;
         padding: 30px;
     }
@@ -48,7 +48,7 @@ form {
 .genre-search-container {
     width: calc(50% - 180px / 2);
 
-    @media (max-width: 825px) {
+    @media (max-width: 940px) {
         width: 100%;
     }
 }
@@ -56,13 +56,17 @@ form {
 label {
     display: block;
     margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+
+    @media (max-width: 940px) {
+        font-size: 1.3rem;
+    }
 }
 
 .food-search-container {
     text-align: right;
 
-    @media (max-width: 825px) {
+    @media (max-width: 940px) {
         text-align: center;
     }
 }
@@ -70,7 +74,7 @@ label {
 .genre-search-container {
     text-align: left;
 
-    @media (max-width: 825px) {
+    @media (max-width: 940px) {
         text-align: center;
     }
 }

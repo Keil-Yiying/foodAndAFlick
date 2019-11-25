@@ -80,10 +80,6 @@ app.getRecipes = function(query) {
     // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
         // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
 
-// ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
-
-
-
 // DEAL WITH FOOTER
 
 

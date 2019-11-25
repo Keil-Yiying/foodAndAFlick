@@ -22,17 +22,22 @@ body {
 }
 
 h1 {
-    font-family: 'Merriweather', serif;
+    font-family: 'Great Vibes', cursive;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 5rem;
     line-height: 1.2;
     width: 100%;
-    margin-top: 0;
-    padding-top: 40px;
+    margin: 0;
+    padding-top: 70px;
+
+    @media (max-width: 940px) {
+        padding-top: 100px;
+    }
 }
 
 h2 {
     font-size: 2.2rem;
+    margin-top: 20px;
 }
 
 p {
@@ -62,7 +67,7 @@ button {
 
     &:hover,
     &:focus {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         color: #da3052;
     }
 }
@@ -83,6 +88,18 @@ button {
 header,
 .form-section {
     height: 50vh;
+}
+
+header {
+    @media (max-width: 940px) {
+        height: 40vh;
+    }
+}
+
+.form-section {
+    @media (max-width: 940px) {
+        height: 60vh;
+    }
 }
 
 header,
