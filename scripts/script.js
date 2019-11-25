@@ -131,6 +131,7 @@ app.init = function() {
                 
                 // printing movies to page
                 $('.movie-results').empty();
+                
                 for (let i = 0; i < 4; i++) {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);

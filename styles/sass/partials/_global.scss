@@ -93,21 +93,30 @@ button {
     margin: 0 auto;
 }
 
-header,
-.form-section {
-    height: 50vh;
-}
+
 
 header {
-    @media (max-width: 940px) {
-        height: 40%;
-    }
+    height: 50vh;
+
+    // @media (max-width: 940px) {
+    //     height: 40%;
+    // }
 }
 
-.form-section {
-    @media (max-width: 940px) {
-        height: 60%;
-    }
+.form-inputs {
+    height: 40vh;
+
+    // @media (max-width: 940px) {
+    //     height: 50%;
+    // }
+}
+
+.submit-button {
+    height: 10vh;
+
+    // @media (max-width: 940px) {
+    //     height: 10%;
+    // }
 }
 
 header,
