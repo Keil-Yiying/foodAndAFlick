@@ -27,7 +27,6 @@ h1 {
     font-size: 3rem;
     line-height: 1.2;
     width: 100%;
-
     margin-top: 0;
     padding-top: 40px;
 }
@@ -38,6 +37,17 @@ h2 {
 
 p {
     font-size: 1rem;
+}
+
+a {
+    color: inherit;
+    font-weight: bold;
+    transition: 0.3s all;
+
+    &:hover,
+    &:focus {
+        color: #da3052;
+    }
 }
 
 button {
@@ -52,7 +62,7 @@ button {
 
     &:hover,
     &:focus {
-        background: #fff;
+        background: rgba(255, 255, 255, 0.8);
         color: #da3052;
     }
 }
@@ -70,7 +80,6 @@ button {
     margin: 0 auto;
 }
 
-
 header,
 .form-section {
     height: 50vh;
@@ -80,6 +89,15 @@ header,
 footer {
     text-align: center;
 }
+
+footer {
+    padding: 30px 0 10px 0;
+
+    p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+} 
 
 .flex-container {
     display: flex;

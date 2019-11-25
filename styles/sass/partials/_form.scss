@@ -29,7 +29,7 @@ form {
     filter: drop-shadow(0 0 5px #da3052);
 }
 
-// icon container
+// icon container div
 .fa-stack {
     width: 180px;
     justify-content: center;
@@ -38,7 +38,6 @@ form {
     top: 10px;
 
     @media (max-width: 825px) {
-        // width: 135px;
         margin: 50px auto;
         padding: 30px;
     }

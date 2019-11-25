@@ -81,11 +81,11 @@ app.getRecipes = function(query) {
         // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
 
 // ALSO NEED TO STYLE LINKS & LITERALLY EVERYTHING ELSE
-    // find a nice bg image for styling
+
 
 
 // DEAL WITH FOOTER
-// OUTER WRAPPER FOR 1600+ px screens?
+
 
 
 

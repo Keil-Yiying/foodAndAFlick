@@ -272,6 +272,17 @@ p {
   font-size: 1rem;
 }
 
+a {
+  color: inherit;
+  font-weight: bold;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+a:hover, a:focus {
+  color: #da3052;
+}
+
 button {
   text-align: center;
   padding: 15px 80px;
@@ -285,7 +296,7 @@ button {
 }
 
 button:hover, button:focus {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
   color: #da3052;
 }
 
@@ -311,6 +322,15 @@ header,
 header,
 footer {
   text-align: center;
+}
+
+footer {
+  padding: 30px 0 10px 0;
+}
+
+footer p {
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 .flex-container {
@@ -475,7 +495,7 @@ select:hover, select:focus {
 .recipe-card {
   width: 100%;
   padding: 20px;
-  background: #fdf3f5;
+  background: #f8eaed;
   border-radius: 25px;
   margin-bottom: 30px;
   -webkit-box-align: center;
@@ -543,7 +563,7 @@ select:hover, select:focus {
 .card-text {
   width: 70%;
   padding-left: 20px;
-  color: #502f2c;
+  color: #45080d;
 }
 
 @media (max-width: 1200px) {
