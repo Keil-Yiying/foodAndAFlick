@@ -70,17 +70,17 @@ app.getRecipes = function(query) {
 // NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!! - OR, if one doesn't return anything
     // so far I used an alert but it also alerts if one result goes wrong while other results load in ok >___<;;;
 
-// MASSIVE EVENT HANDLER
 
 // weird error-handling thing:
     // no dish type = empty array, using == false works to catch it
     // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
         // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
 
+/*
+    METHODS
+*/
 
-
-
-// function for getting the current date so the movie API won't return unreleased movies
+// getting the current date so the movie API won't return unreleased movies
 app.setMovieReleaseDate = function() {
     const today = new Date();
     const year = today.getFullYear();
@@ -89,7 +89,7 @@ app.setMovieReleaseDate = function() {
     app.movieReleaseDate = `${year}-${month}-${day}`;
 }
 
-// function to print movies to page
+// method to print movies to page
 app.printMoviesToPage = function(title, year, imgUrl, blurb, id) {
     const movieHtml = `
         <div class="movie-card flex-container" data-aos="fade-up" data-aos-duration="500">
@@ -103,6 +103,67 @@ app.printMoviesToPage = function(title, year, imgUrl, blurb, id) {
         </div>
     `;
     $('.movie-results').append(movieHtml);
+}
+
+// method to get "ready in x min" info & convert to a readable format
+app.getRecipeReadyTime = function(recipeTimeData) {
+    if (recipeTimeData < 60) {
+        const readyTimeString = `${recipeTimeData} minutes`;
+        console.log(readyTimeString);  // REMOVE    
+        return readyTimeString;
+    } else {
+        const hours = Math.round(recipeTimeData / 60);
+        if (recipeTimeData % 60 === 0) {
+            const readyTimeString = `${hours} hours`;
+            console.log(readyTimeString); // REMOVE 
+            return readyTimeString;
+        } else {
+            const minutes = Math.round(recipeTimeData % 60);
+            const readyTimeString = `${hours}h ${minutes}min`;
+            console.log(readyTimeString); // REMOVE
+            return readyTimeString; 
+        }
+    }
+}
+
+// method to get dish types
+app.getDishType = function(dishTypes) {
+    const dishTypeList = dishTypes;
+    let dishTypeString = `<p>Dish Type(s): `;
+    if (dishTypeList == false) {
+        dishTypeHtml = '';
+    } else {
+        for (let i = 0; i < dishTypeList.length; i++ ) {
+            if (i === (dishTypeList.length - 1)) {
+                dishTypeString += `${dishTypeList[i]}</p>`;
+                console.log(dishTypeString); // REMOVE
+            } else {
+                dishTypeString += `${dishTypeList[i]}, `;
+                console.log(dishTypeString); // REMOVE
+            } 
+        }
+    }
+    return dishTypeString;    
+}
+
+// method to get wine pairings
+app.getWinePairings = function(wineList) {
+    const winePairingList = wineList;
+    let wineString = `<p>Wine Pairing(s): `;
+    if (winePairingList === undefined) {
+        wineString = '';
+    } else {
+        for (let i = 0; i < winePairingList.length; i++ ) {
+            if (i === (winePairingList.length - 1)) {
+                wineString += `${winePairingList[i]}</p>`;
+                console.log(wineString); // REMOVE
+            } else {
+                wineString += `${winePairingList[i]}, `;
+                console.log(wineString); // REMOVE
+            } 
+        }
+    }
+    return wineString;
 }
 
 
@@ -167,67 +228,13 @@ app.init = function() {
                     console.log(recipe); // REMOVE
                     console.log(recipe.dishTypes); // REMOVE~!!!!!
 
-                    // CAN THIS BE A FUNCTION????
-                    // getRecipeTime(minutes) 
+                    // getting recipe time 
+                    const readyTime = app.getRecipeReadyTime(recipe.readyInMinutes);
 
-
-                    // getting recipe time / check if it's over 60 min
-                    let readyTime = '';
-                    if (recipe.readyInMinutes < 60) {
-                        readyTime = `${recipe.readyInMinutes} minutes`;
-                        console.log(readyTime);  // REMOVE    
-                    } else {
-                        const hours = Math.round(recipe.readyInMinutes / 60);
-                        if (recipe.readyInMinutes % 60 === 0) {
-                            readyTime = `${hours} hours`;
-                            console.log(readyTime); // REMOVE 
-                        } else {
-                            const minutes = Math.round(recipe.readyInMinutes % 60);
-                            readyTime = `${hours}h ${minutes}min`;
-                            console.log(readyTime); // REMOVE 
-                        }
-                    }
-                    
-                    /// CAN THIS BE A FUNCTION???
-                    // getDishType(dish)
-                    
-                    // Getting dish types for each recipe, if available.
-                    const dishTypeList = recipe.dishTypes;
-                    let dishTypeHtml = `<p>Dish Type(s): `;
-                    if (dishTypeList == false) {
-                        dishTypeHtml = '';
-                    } else {
-                        for (let i = 0; i < dishTypeList.length; i++ ) {
-                            if (i === (dishTypeList.length - 1)) {
-                                dishTypeHtml += `${dishTypeList[i]}</p>`;
-                                console.log(dishTypeHtml); // REMOVE
-                            } else {
-                                dishTypeHtml += `${dishTypeList[i]}, `;
-                                console.log(dishTypeHtml); // REMOVE
-                            } 
-                        }
-                    }
-
-                    // CAN THIS BE A FUNCTION???
-                    // getWinePairings(wineList);
-                        
-                    // Getting wine pairings for each recipe, if available.
-                    const winePairingList = recipe.winePairing.pairedWines;
-                    let wineHtml = `<p>Wine Pairing(s): `;
-                    if (winePairingList === undefined) {
-                        wineHtml = '';
-                    } else {
-                        for (let i = 0; i < winePairingList.length; i++ ) {
-                            if (i === (winePairingList.length - 1)) {
-                                wineHtml += `${winePairingList[i]}</p>`;
-                                console.log(wineHtml); // REMOVE
-                            } else {
-                                wineHtml += `${winePairingList[i]}, `;
-                                console.log(wineHtml); // REMOVE
-                            } 
-                        }
-                    }
-                
+                                        
+                    // get dish types & wine pairings for each recipe, if available
+                    const dishTypeHtml = app.getDishType(recipe.dishTypes);
+                    const wineHtml = app.getWinePairings(recipe.winePairing.pairedWines);
 
                     // MAKE THIS A FUNCTION LIKE:
                     // printRecipesToPage(title, imgUrl, readyTime, steps, ingredients, dishType, wineType, url)
