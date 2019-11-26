@@ -102,6 +102,7 @@ button {
     min-height: 100vh;
 }
 
+// setting the layout of the landing area
 header {
     height: 50vh;
 
@@ -123,7 +124,7 @@ header {
 
     @media (max-width: 940px) {
         padding: 30px 0;
-        height: 10%;
+        height: auto;
     }
 }
 

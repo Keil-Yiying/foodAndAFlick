@@ -58,10 +58,6 @@ app.getRecipes = function(query) {
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-// BREAK DOWN EVENT HANDLER - TOO BIG
-
-// SMALLEST MEDIA QUERY - MAYBE NEEDS LINKS TO SKIP TO MOVIES? THEN SKIP BACK TO FOODS? I DUNNO @____@;
-    // can do this by changing a display: none to display: block or whatever upon smallest media query.
 
 // SUBMIT BUTTON - maybe use position: absolute to keep it at bottom of screen
     // also needs arrow under for when results load? @________@ - js to show with display-none
@@ -170,11 +166,12 @@ app.getWinePairings = function(wineList) {
 app.init = function() {   
     
     /*
-        METHODS THAT NEED TO RUN
+        METHODS THAT NEED TO INITIALIZE
     */
-    // $('h3').hide();
-    // $('.search-again').hide();
-    // $('footer').hide();
+    $('.fa-chevron-down').hide();
+    $('h3').hide();
+    $('.search-again').hide();
+    $('footer').hide();
     
     /*
         EVENT HANDLERS
@@ -203,6 +200,7 @@ app.init = function() {
             .then(function(movieChoices, recipeChoices) {
                 console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
                 
+                $('.fa-chevron-down').show();
                 $('h3').show();
                 $('.search-again').show();
                 $('footer').show();
@@ -286,6 +284,19 @@ app.init = function() {
             $('.icon').removeClass('fa-film');
             $('.icon').addClass('fa-heart');
         })
+
+    // smooth scrolling
+    $('.fa-chevron-down').on('click', function() {
+        $('html, body').animate({ 
+            scrollTop: $('#results').offset().top
+        }, 500);
+    })
+
+    $('.search-again-button').on('click', function() {
+        $('html, body').animate({ 
+            scrollTop: $('#landing').offset().top
+        }, 1000);
+    })
 
 } // end of app.init()
 

@@ -364,7 +364,7 @@ header {
 @media (max-width: 940px) {
   .submit-button {
     padding: 30px 0;
-    height: 10%;
+    height: auto;
   }
 }
 
@@ -426,6 +426,13 @@ form {
   color: #6c0b11;
   -webkit-filter: drop-shadow(0 0 5px #da3052);
           filter: drop-shadow(0 0 5px #da3052);
+}
+
+.fa-chevron-down {
+  font-size: 1.8rem;
+  display: block;
+  padding-top: 5px;
+  cursor: pointer;
 }
 
 .fa-stack {

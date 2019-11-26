@@ -20,6 +20,13 @@ form {
     filter: drop-shadow(0 0 5px #da3052);
 }
 
+.fa-chevron-down {
+    font-size: 1.8rem;
+    display: block;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
 // icon container div for the circle & icons in the middle
 .fa-stack {
     width: 180px;
