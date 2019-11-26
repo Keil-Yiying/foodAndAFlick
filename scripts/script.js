@@ -1,12 +1,3 @@
-// html page needs to have 2 search inputs, one for movie genres and one for main ingredient
-	// inputs may be dropdown menus due to the way the APIs are structured
-// user chooses genre and ingredient and presses submit button
-	// save the user's choices to variables, which will be passed to the API calls as search parameters
-// Two API calls to (1) movie API using genre and (2) to recipe API using ingredient
-	// use .when() to wait for both calls to return the data
-// API returns some results for each (number might depend on app design)
-// append results on html page with images (maybe 4-6 for each)
-
 const app = {};
 
 app.movieKey = '38f9a8f5c677f0356adca226f357b762';
@@ -51,13 +42,6 @@ app.getRecipes = function(query) {
         }
     })
 }
-
-// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-// SHOULD WE ADD A LOADING CIRCLE CUZ THE AJAX CALLS TAKE A FEW SECONDS??????
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 /*
     METHODS
@@ -163,7 +147,6 @@ app.getWinePairings = function(wineList) {
     }
 }
 
-
 app.init = function() {   
     
     /*
@@ -177,24 +160,18 @@ app.init = function() {
     /*
         EVENT HANDLERS
     */
+    // submit a search
     $('form').on('submit', function (e) {
         e.preventDefault();
-
-        app.usersFoodChoice = $('#food-search').val();
+        app.usersFoodChoice = $('#food-search').val().toLowerCase();
         app.usersGenreChoice = parseInt($('#genre-search').val());
         
         if (app.usersFoodChoice === '') {
             alert('Please make sure you entered a recipe to search and a movie genre!');
         } else {
-
-            /* 
-            using Math.random() to add some randomization to the movie results that show up, otherwise they will always return the top 4 of that genre listed on the API 
-            */
+            // use Math.random() to add some randomization to the movie results 
             const moviePage = Math.ceil(Math.random() * 100);
             app.setMovieReleaseDate();
-        
-            $('#food-search').val(''); // reset inputs after submit
-            $('#genre-search').val(28);
         
             // using Promises to wait for both movie & recipe API calls
             $.when(app.getMovies(app.usersGenreChoice, moviePage, app.movieReleaseDate), app.getRecipes(app.usersFoodChoice))
@@ -228,11 +205,14 @@ app.init = function() {
 
                     app.printRecipesToPage(recipe.title, recipe.image, readyTime, recipe.analyzedInstructions[0].steps, recipe.extendedIngredients, dishTypeHtml, wineHtml, recipe.sourceUrl);
                 } // end of for loop - recipes
+
+                $('#food-search').val(''); // reset inputs
+                $('#genre-search').val(28);
             })
             .fail(function(error) {
                 alert('Sorry, no results found! Please try another search.');
-            });
-        }  // end of if-else for getting results
+            }); 
+        }  // end of if-else for checking inputs/getting results
     }) // end of form submit event handler
 
     // changing the heart icon to utensils on hover when searching recipes
@@ -244,7 +224,8 @@ app.init = function() {
         function(){
             $('.icon').removeClass('fa-utensils');
             $('.icon').addClass('fa-heart');
-        })
+        }
+    )
     
     // changing the heart icon to film on hover when searching movies
     $('.genre-search-container').hover(
@@ -255,7 +236,8 @@ app.init = function() {
         function () {
             $('.icon').removeClass('fa-film');
             $('.icon').addClass('fa-heart');
-        })
+        }
+    )
 
     // smooth scrolling
     $('.fa-chevron-down').on('click', function() {

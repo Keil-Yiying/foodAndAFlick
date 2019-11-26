@@ -2,16 +2,13 @@
     width: calc(50% - 20px);
     align-content: flex-start;
 
-    @media (max-width: 650px) {
+    @media (max-width: 600px) {
         width: 100%;
     }
 }
 
 .movie-results,
 .recipe-results {
-
-    // THIS IS EMPTY!!!!!!!!!!!!!!!!!!! DEAL WITH IT!!!!!!!!!!!
-
         @media (max-width: 600px) {
         width: 100%;
     }

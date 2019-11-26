@@ -23,7 +23,6 @@ form {
 .fa-chevron-down {
     font-size: 1.8rem;
     display: block;
-    padding-top: 25px;
     cursor: pointer;
 }
 
@@ -42,6 +41,15 @@ form {
     }
 }
 
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+
+    @media (max-width: 480px) {
+        font-size: 1rem;
+    }
+}
 
 .food-search-container,
 .genre-search-container {
@@ -49,16 +57,6 @@ form {
 
     @media (max-width: 940px) {
         width: 100%;
-    }
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-
-    @media (max-width: 940px) {
-        font-size: 1.3rem;
     }
 }
 

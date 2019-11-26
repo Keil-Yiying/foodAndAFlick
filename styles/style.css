@@ -237,7 +237,6 @@ html {
 
 html {
   font-size: 125%;
-  scroll-behavior: smooth;
 }
 
 .wrapper {
@@ -274,6 +273,12 @@ h1 {
   }
 }
 
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
 h2 {
   font-size: 2.2rem;
   margin-top: 20px;
@@ -281,7 +286,15 @@ h2 {
 
 @media (max-width: 700px) {
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.2rem;
   }
 }
 
@@ -427,7 +440,6 @@ form {
 .fa-chevron-down {
   font-size: 1.8rem;
   display: block;
-  padding-top: 25px;
   cursor: pointer;
 }
 
@@ -451,6 +463,18 @@ form {
   }
 }
 
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 480px) {
+  label {
+    font-size: 1rem;
+  }
+}
+
 .food-search-container,
 .genre-search-container {
   width: calc(50% - 180px / 2);
@@ -460,18 +484,6 @@ form {
   .food-search-container,
   .genre-search-container {
     width: 100%;
-  }
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-@media (max-width: 940px) {
-  label {
-    font-size: 1.3rem;
   }
 }
 
@@ -532,7 +544,7 @@ select:hover, select:focus {
       align-content: flex-start;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   .results-container {
     width: 100%;
   }
