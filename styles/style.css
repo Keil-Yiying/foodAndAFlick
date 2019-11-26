@@ -328,11 +328,11 @@ button:hover, button:focus {
 }
 
 .landing {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(76, 5, 10, 0.7)), to(rgba(76, 5, 10, 0.7))), url("../assets/bg-image2.jpg");
-  background-image: linear-gradient(to bottom, rgba(76, 5, 10, 0.7), rgba(76, 5, 10, 0.7)), url("../assets/bg-image2.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(76, 5, 10, 0.7)), to(rgba(76, 5, 10, 0.7))), url("../assets/bg-image.jpg");
+  background-image: linear-gradient(to bottom, rgba(76, 5, 10, 0.7), rgba(76, 5, 10, 0.7)), url("../assets/bg-image.jpg");
   background-size: cover;
   background-position: center;
-  max-width: 1600px;
+  max-width: 1650px;
   margin: 0 auto;
   min-height: 100vh;
 }
@@ -348,7 +348,7 @@ header {
 }
 
 .form-inputs {
-  height: 35vh;
+  height: 30vh;
 }
 
 @media (max-width: 940px) {
@@ -358,7 +358,7 @@ header {
 }
 
 .submit-button {
-  height: 15vh;
+  height: 20vh;
 }
 
 @media (max-width: 940px) {
@@ -391,10 +391,6 @@ footer p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.display-none {
-  display: none;
 }
 
 form {
@@ -431,7 +427,7 @@ form {
 .fa-chevron-down {
   font-size: 1.8rem;
   display: block;
-  padding-top: 5px;
+  padding-top: 25px;
   cursor: pointer;
 }
 
