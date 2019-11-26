@@ -199,8 +199,6 @@ app.init = function() {
             // using Promises to wait for both movie & recipe API calls
             $.when(app.getMovies(app.usersGenreChoice, moviePage, app.movieReleaseDate), app.getRecipes(app.usersFoodChoice))
             .then(function(movieChoices, recipeChoices) {
-                console.log(movieChoices[0], recipeChoices[0]); // REMOVE!!!
-                
                 $('.fa-chevron-down').show();
                 $('h3').show();
                 $('.search-again').show();
@@ -208,7 +206,6 @@ app.init = function() {
                 
                 // printing movies to page
                 $('.movie-results').empty();
-
                 for (let i = 0; i < 4; i++) {
                     const movie = movieChoices[0].results[i];
                     const movieYear = movie.release_date.slice(0, 4);
@@ -217,24 +214,17 @@ app.init = function() {
                     const movieBlurb = movie.overview.slice(0, 241);
 
                     app.printMoviesToPage(movie.title, movieYear, movie.poster_path,movieBlurb, movie.id);                    
-                    
                 } // end of for loop - movies
                     
                 // printing recipes to page
                 $('.recipe-results').empty();
                 for (let i = 0; i < 4; i++) {
                     const recipe = recipeChoices[0].recipes[i];
-                    console.log(recipe); // REMOVE
-                    console.log(recipe.dishTypes); // REMOVE~!!!!!
-
-                    // getting recipe time 
                     const readyTime = app.getRecipeReadyTime(recipe.readyInMinutes);
 
-                                        
                     // get dish types & wine pairings for each recipe, if available
                     const dishTypeHtml = app.getDishType(recipe.dishTypes);
                     const wineHtml = app.getWinePairings(recipe.winePairing.pairedWines);
-                    console.log("wineHtml", wineHtml);
 
                     app.printRecipesToPage(recipe.title, recipe.image, readyTime, recipe.analyzedInstructions[0].steps, recipe.extendedIngredients, dishTypeHtml, wineHtml, recipe.sourceUrl);
                 } // end of for loop - recipes
