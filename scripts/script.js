@@ -4,7 +4,7 @@
 	// save the user's choices to variables, which will be passed to the API calls as search parameters
 // Two API calls to (1) movie API using genre and (2) to recipe API using ingredient
 	// use .when() to wait for both calls to return the data
-// API returns 5~10 results for each (number might depend on app design)
+// API returns some results for each (number might depend on app design)
 // append results on html page with images (maybe 4-6 for each)
 
 const app = {};
@@ -59,23 +59,9 @@ app.getRecipes = function(query) {
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-// SUBMIT BUTTON - maybe use position: absolute to keep it at bottom of screen
-    // also needs arrow under for when results load? @________@ - js to show with display-none
-
-
-// NEED AN ERROR CHECK IF USER DOES NOT SELECT ANYTHING FOR ONE OR BOTH INPUTS!!!!!!! - OR, if one doesn't return anything
-    // so far I used an alert but it also alerts if one result goes wrong while other results load in ok >___<;;;
-
-
-// weird error-handling thing:
-    // no dish type = empty array, using == false works to catch it
-    // no wine pairing = empty object, using == false gives an undefined error, but using == undefined works. (should I use === undefined?)
-        // OHHH because I'm looking for the array inside the object, but if the object is empty, there is no array therefore it's undefined (but how come == false doesn't work?)
-
 /*
     METHODS
 */
-
 // getting the current date so the movie API won't return unreleased movies
 app.setMovieReleaseDate = function() {
     const today = new Date();
@@ -101,22 +87,39 @@ app.printMoviesToPage = function(title, year, imgUrl, blurb, id) {
     $('.movie-results').append(movieHtml);
 }
 
+// method to print recipes to page
+app.printRecipesToPage = function(title, imgUrl, readyTime, steps, ingredients, dishTypes, wines, url) {
+    const recipeHtml = `
+        <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="500">
+            <div class="recipe-img">
+                <img src="${imgUrl}" alt="${title}">
+            </div>
+            <div class="card-text">
+                <p class="card-title">${title}</p>
+                <p>Ready in ${readyTime}</p>
+                <p>${steps.length} steps, ${ingredients.length} ingredients</p>
+                ${dishTypes}
+                ${wines}
+                <p><a href="${url}">Go to recipe</a></p>
+            </div>
+        </div>
+    `;
+    $('.recipe-results').append(recipeHtml);
+}
+
 // method to get "ready in x min" info & convert to a readable format
 app.getRecipeReadyTime = function(recipeTimeData) {
     if (recipeTimeData < 60) {
-        const readyTimeString = `${recipeTimeData} minutes`;
-        console.log(readyTimeString);  // REMOVE    
+        const readyTimeString = `${recipeTimeData} minutes`;  
         return readyTimeString;
     } else {
         const hours = Math.round(recipeTimeData / 60);
         if (recipeTimeData % 60 === 0) {
             const readyTimeString = `${hours} hours`;
-            console.log(readyTimeString); // REMOVE 
             return readyTimeString;
         } else {
             const minutes = Math.round(recipeTimeData % 60);
             const readyTimeString = `${hours}h ${minutes}min`;
-            console.log(readyTimeString); // REMOVE
             return readyTimeString; 
         }
     }
@@ -127,19 +130,18 @@ app.getDishType = function(dishTypes) {
     const dishTypeList = dishTypes;
     let dishTypeString = `<p>Dish Type(s): `;
     if (dishTypeList == false) {
-        dishTypeHtml = '';
+        dishTypeString = '';
+        return dishTypeString;
     } else {
         for (let i = 0; i < dishTypeList.length; i++ ) {
             if (i === (dishTypeList.length - 1)) {
                 dishTypeString += `${dishTypeList[i]}</p>`;
-                console.log(dishTypeString); // REMOVE
             } else {
                 dishTypeString += `${dishTypeList[i]}, `;
-                console.log(dishTypeString); // REMOVE
             } 
         }
-    }
-    return dishTypeString;    
+        return dishTypeString; 
+    }   
 }
 
 // method to get wine pairings
@@ -148,18 +150,17 @@ app.getWinePairings = function(wineList) {
     let wineString = `<p>Wine Pairing(s): `;
     if (winePairingList === undefined) {
         wineString = '';
+        return wineString;
     } else {
         for (let i = 0; i < winePairingList.length; i++ ) {
             if (i === (winePairingList.length - 1)) {
                 wineString += `${winePairingList[i]}</p>`;
-                console.log(wineString); // REMOVE
             } else {
                 wineString += `${winePairingList[i]}, `;
-                console.log(wineString); // REMOVE
             } 
         }
+        return wineString;
     }
-    return wineString;
 }
 
 
@@ -233,28 +234,9 @@ app.init = function() {
                     // get dish types & wine pairings for each recipe, if available
                     const dishTypeHtml = app.getDishType(recipe.dishTypes);
                     const wineHtml = app.getWinePairings(recipe.winePairing.pairedWines);
+                    console.log("wineHtml", wineHtml);
 
-                    // MAKE THIS A FUNCTION LIKE:
-                    // printRecipesToPage(title, imgUrl, readyTime, steps, ingredients, dishType, wineType, url)
-
-
-                    const recipeHtml = `
-                        <div class="recipe-card flex-container" data-aos="fade-up" data-aos-duration="500">
-                            <div class="recipe-img">
-                                <img src="${recipe.image}" alt="${recipe.title}">
-                            </div>
-                            <div class="card-text">
-                                <p class="card-title">${recipe.title}</p>
-                                <p>Ready in ${readyTime}</p>
-                                <p>${recipe.analyzedInstructions[0].steps.length} steps, ${recipe.extendedIngredients.length} ingredients</p>
-                                ${dishTypeHtml}
-                                ${wineHtml}
-                                <p><a href="${recipe.sourceUrl}">Go to recipe</a></p>
-                            </div>
-                        </div>
-                    `;
-                    $('.recipe-results').append(recipeHtml);
-
+                    app.printRecipesToPage(recipe.title, recipe.image, readyTime, recipe.analyzedInstructions[0].steps, recipe.extendedIngredients, dishTypeHtml, wineHtml, recipe.sourceUrl);
                 } // end of for loop - recipes
             })
             .fail(function(error) {
